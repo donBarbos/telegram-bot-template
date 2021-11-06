@@ -6,12 +6,8 @@ services:
     container_name: postgres-bot
     image: postgres:12-alpine
     restart: always
-    env_file: .env
-    environment:
-      POSTGRES_DB: ${PG_NAME}
-      POSTGRES_USER: ${PG_NAME}
-      POSTGRES_PASSWORD: ${PG_PASSWORD}
-      PGDATA: /var/lib/postgresql/data/pgdata
+    env_file:
+      - .env
     ports:
       - ${PG_PORT}:${PG_PORT}
     volumes:
@@ -21,10 +17,8 @@ services:
     container_name: redis-bot
     image: redis:5-alpine
     restart: always
-    env_file: .env
-    environment:
-      # ALLOW_EMPTY_PASSWORD: yes
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    env_file:
+      - .env
     ports:
       - ${REDIS_PORT}:${REDIS_PORT}
     volumes:
@@ -34,17 +28,8 @@ services:
     container_name: telegram-bot
     build: .
     restart: always
-    env_file: .env
-    environment:
-      BOT_TOKEN: ${BOT_TOKEN}
-      PG_NAME: ${PG_NAME}
-      PG_USER: ${PG_USER}
-      PG_PASSWORD: ${PG_PASSWORD}
-      PG_HOST: ${PG_HOST}
-      PG_PORT: ${PG_PORT}
-      REDIS_HOST: ${REDIS_HOST}
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
-      REDIS_PORT: ${REDIS_PORT}
+    env_file:
+      - .env
     depends_on:
       - postgres
       - redis
