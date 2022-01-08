@@ -5,31 +5,43 @@ services:
   postgres:
     container_name: postgres-bot
     image: postgres:12-alpine
-    restart: always
+    #restart: always
     env_file:
       - .env
+    environment:
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_DB=${PG_NAME}
+      - PGDATA=${PG_DATA}
     ports:
       - ${PG_PORT}:${PG_PORT}
+    expose:
+      - ${PG_PORT}
     volumes:
       - /usr/src/app/data:/var/lib/postgresql/data/pgdata
 
   redis:
     container_name: redis-bot
     image: redis:5-alpine
-    restart: always
+    #restart: always
     env_file:
       - .env
     ports:
       - ${REDIS_PORT}:${REDIS_PORT}
+    expose:
+      - ${REDIS_PORT}
     volumes:
       - /usr/src/app/data:/bitnami/redis/data
 
   bot:
     container_name: telegram-bot
     build: .
-    restart: always
+    #restart: always
     env_file:
       - .env
+    links:
+      - postgres
+      - redis
     depends_on:
       - postgres
       - redis

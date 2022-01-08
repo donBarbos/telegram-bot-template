@@ -26,24 +26,28 @@
 
 - configure environment variables in `.env` file
 
+- start virtual environment
+    ```
+    poetry shell
+    ```
 - building the docker image
     ```
     docker-compose build
     ```
 - start service
     ```
-    docker-compose up
+    docker-compose up -d
     ```
 
 # Environment variables
 
 - `BOT_TOKEN` — Telegram bot token
-- `PG_HOST` — host name or an IP address PostgreSQL database
+- `PG_HOST` — hostname or an IP address PostgreSQL database
 - `PG_NAME` — the name of the PostgreSQL database
 - `PG_PASSWORD` — password used to authenticate
 - `PG_PORT` — connection port number (defaults to 5432 if not provided)
 - `PG_USER` — the username used to authenticate
-- `REDIS_HOST` — host name or an IP address Redis database 
+- `REDIS_HOST` — hostname or an IP address Redis database 
 - `REDIS_PASSWORD` — Redis database password, empty by default
 - `REDIS_PORT` — port from Redis database
 

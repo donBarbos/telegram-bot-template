@@ -1,0 +1,43 @@
+#Ignore the logs directory
+logs/
+*.log
+
+#Ignoring git and cache folders
+.git/
+.github/
+.cache/
+__pycache__/
+
+#Ignoring all the markdown and class files
+*.md
+**/*.class
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Distribution / packaging
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+LICENSE
