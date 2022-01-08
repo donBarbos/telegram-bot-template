@@ -5,7 +5,7 @@ services:
   postgres:
     container_name: postgres-bot
     image: postgres:12-alpine
-    #restart: always
+    restart: always
     env_file:
       - .env
     environment:
@@ -23,7 +23,7 @@ services:
   redis:
     container_name: redis-bot
     image: redis:5-alpine
-    #restart: always
+    restart: always
     env_file:
       - .env
     ports:
@@ -36,7 +36,7 @@ services:
   bot:
     container_name: telegram-bot
     build: .
-    #restart: always
+    restart: always
     env_file:
       - .env
     links:
