@@ -51,7 +51,7 @@
 - `REDIS_PASSWORD` — Redis database password, empty by default
 - `REDIS_PORT` — port from Redis database
 
-> *I use Redis for Finite State Machine, and PostgreSQL as Database for storing notes*
+> *I use Redis for Finite State Machine, and PostgreSQL as Database*
 
 # Tech Stack
 
