@@ -24,7 +24,7 @@ class Database:
             )
         )
 
-    async def init_database(self) -> None:
+    async def create_tables(self) -> None:
         """create tables in the database."""
         with open("bot/sql/init.sql", "r") as f:
             sql = f.read()
@@ -40,7 +40,7 @@ class Database:
 
     async def verification(self, user_id: int) -> bool:
         """checks if the user is in the database."""
-        response = await self.pool.fetchrow(f"SELECT user_id FROM Users WHERE user_id={user_id}")
+        response = await self.pool.fetchrow(f"SELECT EXISTS(SELECT user_id FROM Users WHERE user_id={user_id})")
         if response:
             return True
         else:

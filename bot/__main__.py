@@ -8,7 +8,7 @@ from loguru import logger
 
 async def startup(dp: Dispatcher) -> None:
     """initialization"""
-    await db.init_database()
+    await db.create_tables()
     await set_default_commands(dp)
     logger.info("bot started")
 

@@ -35,7 +35,7 @@ warn_unused_configs = true
 name = "telegram-bot-template"
 version = "0.1.0"
 description = "Template for telegram bot"
-authors = ["DONSIMON92 <semenische@yandex.com>"]
+authors = ["DONSIMON92 <semenische@protonmail.com>"]
 license = "MIT License"
 
 [tool.poetry.dependencies]
