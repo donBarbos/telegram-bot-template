@@ -5,7 +5,7 @@ from bot.loader import dp
 
 
 @dp.message_handler(commands="start")
-async def start_message(message: types.Message):
+async def start_message(message: types.Message) -> None:
     """welcome message."""
     if await db.verification(message.from_user.id):
         await bot.send_message(message.chat.id, "👋 Hello, I remember you.")
@@ -23,13 +23,13 @@ async def start_message(message: types.Message):
 
 
 @dp.message_handler(commands=("help", "info", "about"))
-async def give_info(message: types.Message):
+async def give_info(message: types.Message) -> None:
     """the target of this bot."""
     await bot.send_message(message.chat.id, "ℹ️ <b>[About]\n</b> Bot is a template for future projects.")
 
 
 @dp.message_handler(commands="contacts")
-async def give_contacts(message: types.Message):
+async def give_contacts(message: types.Message) -> None:
     """ссылка на код проекта."""
     btn_link = types.InlineKeyboardButton(
         text="Go to GitHub.", url="https://github.com/DONSIMON92/telegram-bot-template"
@@ -43,7 +43,7 @@ async def give_contacts(message: types.Message):
 
 
 @dp.message_handler(commands="settings")
-async def give_settings(message: types.Message):
+async def give_settings(message: types.Message) -> None:
     """справка по настройкам."""
     name = await db.get_name(message.from_user.id)
     lang = await db.get_lang(message.from_user.id)
@@ -54,24 +54,24 @@ async def give_settings(message: types.Message):
 
 
 @dp.callback_query_handler(lambda c: c.data == "name")
-async def alter_name(callback_query: types.CallbackQuery):
+async def alter_name(callback_query: types.CallbackQuery) -> None:
     await bot.send_message(callback_query.id, "How should I address you?")
     await bot.answer_callback_query(callback_query.id)
 
 
 @dp.callback_query_handler(lambda c: c.data == "lang")
-async def alter_lang(callback_query: types.CallbackQuery):
+async def alter_lang(callback_query: types.CallbackQuery) -> None:
     await bot.send_message(callback_query.id, "Choose language:")
     await bot.answer_callback_query(callback_query.id, "Choose language:")
 
 
 @dp.message_handler(content_types="text")
-async def text_handler(message: types.Message):
+async def text_handler(message: types.Message) -> None:
     await bot.send_message(message.chat.id, "Text processing can take place here.")
 
 
 @dp.message_handler()
-async def unknown_message(message: types.Message):
+async def unknown_message(message: types.Message) -> None:
     if not message.is_command():
         await bot.send_message(message.chat.id, "❌ I don't know how to work with this format.")
     else:
