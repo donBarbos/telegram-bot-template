@@ -1,12 +1,20 @@
+from asyncio import AbstractEventLoop
 from loguru import logger
+from typing import Optional
 
 import asyncpg
-import uvloop  # running only linux
 
 
 class Database:
     def __init__(
-        self, name: str, user: str, password: str, host: str, port: str, loop: uvloop.Loop, pool: asyncpg.pool.Pool
+        self,
+        name: Optional[str],
+        user: Optional[str],
+        password: Optional[str],
+        host: Optional[str],
+        port: Optional[str],
+        loop: AbstractEventLoop,
+        pool: asyncpg.pool.Pool,
     ) -> None:
         self.name = name
         self.user = user
@@ -41,10 +49,7 @@ class Database:
     async def verification(self, user_id: int) -> bool:
         """checks if the user is in the database."""
         response = await self.pool.fetchrow(f"SELECT EXISTS(SELECT user_id FROM Users WHERE user_id={user_id})")
-        if response:
-            return True
-        else:
-            return False
+        return True if response else False
 
     async def get_name(self, user_id: int) -> str:
         return await self.pool.fetchval(f"SELECT name FROM Users WHERE user_id={user_id}")

@@ -32,7 +32,7 @@ async def give_info(message: types.Message) -> None:
 async def give_contacts(message: types.Message) -> None:
     """ссылка на код проекта."""
     btn_link = types.InlineKeyboardButton(
-        text="Go to GitHub.", url="https://github.com/DONSIMON92/telegram-bot-template"
+        text="Go to GitHub.", url="https://github.com/donBarbos/telegram-bot-template"
     )
     keyboard_link = types.InlineKeyboardMarkup().add(btn_link)
     await bot.send_message(
