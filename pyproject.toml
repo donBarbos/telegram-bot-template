@@ -2,7 +2,7 @@
 name = "telegram-bot-template"
 version = "0.1.0"
 description = "Template for telegram bot"
-authors = ["DONSIMON92 <semenische@protonmail.com>"]
+authors = ["donBarbos <donbarbos@proton.me>"]
 license = "MIT License"
 
 [tool.poetry.dependencies]
