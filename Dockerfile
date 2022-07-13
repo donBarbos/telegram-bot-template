@@ -17,4 +17,4 @@ RUN apt update && \
     apt-get -y remove build-essential curl && apt-get -y autoremove --purge && apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt
 
-CMD ["python", "-m", "bot"]
+ENTRYPOINT ["python", "-m", "bot"]
