@@ -12,7 +12,7 @@ asyncpg = "^0.26.0"
 aioredis = "^2.0.0"
 loguru = "^0.6.0"
 uvloop = "^0.16.0"
-python-dotenv = "^0.19.1"
+python-dotenv = "^0.20.0"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.20.0"
