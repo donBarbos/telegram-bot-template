@@ -10,7 +10,7 @@ python = "^3.7"
 aiogram = "^2.15"
 asyncpg = "^0.24.0"
 aioredis = "^2.0.0"
-loguru = "^0.5.3"
+loguru = "^0.6.0"
 uvloop = "^0.16.0"
 python-dotenv = "^0.19.1"
 
