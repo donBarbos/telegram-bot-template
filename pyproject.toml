@@ -30,7 +30,7 @@ pep8-naming = "^0.13.1"
 mypy = "^0.971"
 autoflake = "^1.4"
 pyupgrade = "^2.37.3"
-yesqa = "^1.3.0"
+yesqa = "^1.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
