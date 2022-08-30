@@ -114,7 +114,7 @@ tests_no_zope = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy"
 
 [[package]]
 name = "autoflake"
-version = "1.5.1"
+version = "1.5.2"
 description = "Removes unused imports and unused variables"
 category = "dev"
 optional = false
@@ -798,8 +798,8 @@ attrs = [
     {file = "attrs-21.4.0.tar.gz", hash = "sha256:626ba8234211db98e869df76230a137c4c40a12d72445c45d5f5b716f076e2fd"},
 ]
 autoflake = [
-    {file = "autoflake-1.5.1-py2.py3-none-any.whl", hash = "sha256:275e05e3caa8307269ad4d46f2e058b76a5c41ca7d1a7f57158d64e9df3ffdd6"},
-    {file = "autoflake-1.5.1.tar.gz", hash = "sha256:8272efbecf7c6d5e2b00fa3b2998478a3ad92d7c914a49a527d733dae7f800c5"},
+    {file = "autoflake-1.5.2-py2.py3-none-any.whl", hash = "sha256:3a57716fdaa6c21273b901e62a8d1682b266a2ad43f7a64e5f16663c9cdfd73c"},
+    {file = "autoflake-1.5.2.tar.gz", hash = "sha256:79c27c11efba4c7f35ca9747cdc2da0f5862fb0e0813c168fd781c0c572b9b01"},
 ]
 babel = [
     {file = "Babel-2.9.1-py2.py3-none-any.whl", hash = "sha256:ab49e12b91d937cd11f0b67cb259a57ab4ad2b59ac7a3b41d6c06c0ac5b0def9"},
