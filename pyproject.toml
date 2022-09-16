@@ -29,7 +29,7 @@ pyflakes = "^2.4.0"
 pep8-naming = "^0.13.2"
 mypy = "^0.971"
 autoflake = "^1.5"
-pyupgrade = "^2.37.3"
+pyupgrade = "^2.38.0"
 yesqa = "^1.4.0"
 
 [build-system]
