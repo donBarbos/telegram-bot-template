@@ -28,7 +28,7 @@ flake8-isort = "^4.2.0"
 pyflakes = "^2.4.0"
 pep8-naming = "^0.13.2"
 mypy = "^0.982"
-autoflake = "^1.6"
+autoflake = "^1.7"
 pyupgrade = "^3.0.0"
 yesqa = "^1.4.0"
 
