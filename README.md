@@ -2,6 +2,7 @@
 
 <p align="center">
 <a href="https://github.com/donBarbos/telegram-bot-template/actions/workflows/checks.yml"><img src="https://img.shields.io/github/workflow/status/donBarbos/telegram-bot-template/Checks?label=checks&style=plastic" alt="Checking Status"></a>
+<a href="https://github.com/donBarbos/telegram-bot-template/actions/workflows/docker-image.yml"><img src="https://img.shields.io/github/workflow/status/donBarbos/telegram-bot-template/Docker%20Image%20CI?label=docker%20image&style=plastic" alt="Docker Build Status"></a>
 <a href="https://www.python.org/downloads"><img src="https://img.shields.io/badge/Python-3.7%2B-blue?style=plastic" alt="Python"></a>
 <a href="https://github.com/donBarbos/telegram-bot-template/blob/master/LICENSE"><img src="https://img.shields.io/github/license/donBarbos/telegram-bot-template?style=plastic" alt="License"></a>
 <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg?style=plastic" alt="Code style"></a>
