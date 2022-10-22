@@ -43,15 +43,17 @@
 
 ## 🌍 Environment variables
 
-- `BOT_TOKEN` — Telegram bot token
-- `PG_HOST` — hostname or an IP address PostgreSQL database
-- `PG_NAME` — the name of the PostgreSQL database
-- `PG_PASSWORD` — password used to authenticate
-- `PG_PORT` — connection port number (defaults to 5432 if not provided)
-- `PG_USER` — the username used to authenticate
-- `REDIS_HOST` — hostname or an IP address Redis database
-- `REDIS_PASSWORD` — Redis database password, empty by default
-- `REDIS_PORT` — port from Redis database
+| variables         | description |
+|:-----------------:| ----------- |
+| `BOT_TOKEN`       | Telegram bot API token |
+| `PG_HOST`         | hostname or an IP address PostgreSQL database |
+| `PG_NAME`         | the name of the PostgreSQL database |
+| `PG_PASSWORD`     | password used to authenticate |
+| `PG_PORT`         | connection port number (defaults to 5432 if not provided) |
+| `PG_USER`         | the username used to authenticate |
+| `REDIS_HOST`      | hostname or an IP address Redis database |
+| `REDIS_PASSWORD`  | Redis database password, empty by default |
+| `REDIS_PORT`      | port from Redis database |
 
 > *I use Redis for Finite State Machine, and PostgreSQL as Database*
 
