@@ -17,7 +17,7 @@ python-dotenv = "^0.21.0"
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.20.0"
 black = "^22.10"
-isort = "^5.10.1"
+isort = "^5.11.4"
 flake8 = "^4.0.1"
 flake8-bugbear = "^22.10.25"
 flake8-polyfill = "^1.0.2"
