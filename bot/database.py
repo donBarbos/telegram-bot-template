@@ -14,7 +14,6 @@ class Database:
         host: Optional[str],
         port: Optional[str],
         loop: AbstractEventLoop,
-        pool: asyncpg.pool.Pool,
     ) -> None:
         self.name = name
         self.user = user

@@ -23,5 +23,4 @@ db = Database(
     host=os.getenv("PG_HOST"),
     port=os.getenv("PG_PORT"),
     loop=loop,
-    pool=None,
 )
