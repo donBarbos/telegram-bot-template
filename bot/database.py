@@ -7,13 +7,13 @@ import asyncpg
 
 class Database:
     def __init__(
-        self,
-        name: Optional[str],
-        user: Optional[str],
-        password: Optional[str],
-        host: Optional[str],
-        port: Optional[str],
-        loop: AbstractEventLoop,
+            self,
+            name: Optional[str],
+            user: Optional[str],
+            password: Optional[str],
+            host: Optional[str],
+            port: Optional[str],
+            loop: AbstractEventLoop,
     ) -> None:
         self.name = name
         self.user = user
@@ -47,8 +47,8 @@ class Database:
 
     async def verification(self, user_id: int) -> bool:
         """checks if the user is in the database."""
-        response = await self.pool.fetchrow(f"SELECT EXISTS(SELECT user_id FROM Users WHERE user_id={user_id})")
-        return True if response else False
+        response = await self.pool.fetchrow("SELECT EXISTS(SELECT user_id FROM Users WHERE user_id=$1)", user_id)
+        return response[0]
 
     async def get_name(self, user_id: int) -> str:
         return await self.pool.fetchval(f"SELECT name FROM Users WHERE user_id={user_id}")
