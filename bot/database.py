@@ -7,13 +7,13 @@ import asyncpg
 
 class Database:
     def __init__(
-            self,
-            name: Optional[str],
-            user: Optional[str],
-            password: Optional[str],
-            host: Optional[str],
-            port: Optional[str],
-            loop: AbstractEventLoop,
+        self,
+        name: Optional[str],
+        user: Optional[str],
+        password: Optional[str],
+        host: Optional[str],
+        port: Optional[str],
+        loop: AbstractEventLoop,
     ) -> None:
         self.name = name
         self.user = user
