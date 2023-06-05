@@ -1,5 +1,4 @@
-from aiogram import Bot
-from aiogram import Dispatcher
+from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.redis import RedisStorage2
 from bot.database import Database
 from dotenv import load_dotenv

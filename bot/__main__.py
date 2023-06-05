@@ -1,8 +1,7 @@
 from aiogram import Dispatcher
 from aiogram.utils import executor
 from bot.commands import set_default_commands
-from bot.loader import db
-from bot.loader import dp
+from bot.loader import db, dp
 from loguru import logger
 
 
