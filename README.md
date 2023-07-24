@@ -8,67 +8,63 @@
 <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg?style=plastic" alt="Code style"></a>
 <p>
 
-
 ## 🚀 Getting Started
 
 ### Running on Local Machine
 
-- install dependencies using [Poetry](https://python-poetry.org "python package manager")
+-   install dependencies using [Poetry](https://python-poetry.org "python package manager")
     ```
     poetry install
     ```
-- configure environment variables in `.env` file
+-   configure environment variables in `.env` file
 
-- start bot in virtual environment
+-   start bot in virtual environment
     ```
     poetry run python -m bot
     ```
 
 ### Launch in Docker
 
-- configure environment variables in `.env` file
+-   configure environment variables in `.env` file
 
-- start virtual environment
+-   start virtual environment
     ```
     poetry shell
     ```
-- building the docker image
+-   building the docker image
     ```
     docker-compose build
     ```
-- start service
+-   start service
     ```
     docker-compose up -d
     ```
 
-
 ## 🌍 Environment variables
 
-| variables         | description |
-|:-----------------:| ----------- |
-| `BOT_TOKEN`       | Telegram bot API token |
-| `PG_HOST`         | hostname or an IP address PostgreSQL database |
-| `PG_NAME`         | the name of the PostgreSQL database |
-| `PG_PASSWORD`     | password used to authenticate |
-| `PG_PORT`         | connection port number (defaults to 5432 if not provided) |
-| `PG_USER`         | the username used to authenticate |
-| `REDIS_HOST`      | hostname or an IP address Redis database |
-| `REDIS_PASSWORD`  | Redis database password, empty by default |
-| `REDIS_PORT`      | port from Redis database |
+|    variables     | description                                               |
+| :--------------: | --------------------------------------------------------- |
+|   `BOT_TOKEN`    | Telegram bot API token                                    |
+|    `PG_HOST`     | hostname or an IP address PostgreSQL database             |
+|    `PG_NAME`     | the name of the PostgreSQL database                       |
+|  `PG_PASSWORD`   | password used to authenticate                             |
+|    `PG_PORT`     | connection port number (defaults to 5432 if not provided) |
+|    `PG_USER`     | the username used to authenticate                         |
+|   `REDIS_HOST`   | hostname or an IP address Redis database                  |
+| `REDIS_PASSWORD` | Redis database password, empty by default                 |
+|   `REDIS_PORT`   | port from Redis database                                  |
 
-> *I use Redis for Finite State Machine, and PostgreSQL as Database*
-
+> _I use Redis for Finite State Machine, and PostgreSQL as Database_
 
 ## 🔧 Tech Stack
 
-- `aiogram` — asynchronous framework for Telegram Bot API
-- `asyncpg` — asynchronous PostgreSQL database client library
-- `poetry` — development workflow
-- `loguru` — third party library for logging in Python
-- `docker` — to automate deployment
-- `postgres` — powerful, open source object-relational database system
-- `redis` — an in-memory data structure store
-
+-   `aiogram` — asynchronous framework for Telegram Bot API
+-   `asyncpg` — asynchronous PostgreSQL database client library
+-   `poetry` — development workflow
+-   `loguru` — third party library for logging in Python
+-   `docker` — to automate deployment
+-   `postgres` — powerful, open source object-relational database system
+-   `redis` — an in-memory data structure store
 
 ## 👷🏾 Contributing
 
@@ -82,12 +78,9 @@ If you have a suggestion that would make this better, please fork the repo and c
 4. `Push` your `commits` to the `branch`
 5. Submit a `pull request`
 
-
-
 ## 📝 License
 
 Distributed under the GPL-3.0 license. See `LICENSE` for more information.
-
 
 ## 📢 Contact
 
