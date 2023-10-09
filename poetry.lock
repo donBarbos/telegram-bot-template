@@ -2,13 +2,13 @@
 
 [[package]]
 name = "aiogram"
-version = "2.25.1"
+version = "2.25.2"
 description = "Is a pretty simple and fully asynchronous framework for Telegram Bot API"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "aiogram-2.25.1-py3-none-any.whl", hash = "sha256:7bb770cd0459f1dbaea00578bf13fb2e6a1812f22adf94a988c11a7c0d5f33e1"},
-    {file = "aiogram-2.25.1.tar.gz", hash = "sha256:59ad78fc0ebbef1fd471c15778a4594b60117e0d7373bc2ce7bcd192074d527d"},
+    {file = "aiogram-2.25.2-py3-none-any.whl", hash = "sha256:960b0a1a7238d515f7ab335cbbbc115a1b89579fdf2cb1cb4852a227346acb78"},
+    {file = "aiogram-2.25.2.tar.gz", hash = "sha256:c4bc59b8c455c36e4f4de4a3f4ba79812717bbdb7a146552b5248ba6533afb31"},
 ]
 
 [package.dependencies]
@@ -1377,4 +1377,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.7"
-content-hash = "ccff7bb24d03aa3f288e6c050d2614fedc00973075e01cfe7e596b56513fbeef"
+content-hash = "2153e1c29bbb5acd88996ddb029e312a9cf6f76076b0339707935c26dc62486e"
