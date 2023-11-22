@@ -8,17 +8,13 @@ async def start_message(message: types.Message) -> None:
     """welcome message."""
     if await db.verification(message.from_user.id):
         await bot.send_message(message.chat.id, message_texts["welcome"])
-    else:
-        if message.from_user.first_name != "None":
-            name = message.from_user.first_name
-        elif message.from_user.username != "None":
-            name = message.from_user.username
-        elif message.from_user.last_name != "None":
-            name = message.from_user.last_name
-        else:
-            name = ""
-        await db.add_user(message.from_user.id, name, message.from_user.locale.language_name)
-        await bot.send_message(message.chat.id, message_texts["about"])
+        return
+    first_name = message.from_user.first_name
+    username = message.from_user.username
+    last_name = message.from_user.last_name
+    name = first_name or username or last_name or ""
+    await db.add_user(message.from_user.id, name, message.from_user.locale.language_name)
+    await bot.send_message(message.chat.id, message_texts["about"])
 
 
 @dp.message_handler(commands=("help", "info", "about"))
