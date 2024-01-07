@@ -42,7 +42,8 @@ class Database:
 
     async def add_user(self, user_id: int, name: str, lang: str) -> None:
         """add a new user to the database."""
-        await self.pool.execute(f"INSERT INTO Users VALUES({user_id}, '{name}', '{lang}')")
+        user_data = (user_id, name, lang)
+        await self.pool.execute("INSERT INTO Users VALUES($1, '$2', '$3')", *user_data)
         logger.info(f"added new user | user_id: {user_id}; name: {name}; language: {lang}")
 
     async def verification(self, user_id: int) -> bool:
@@ -51,7 +52,7 @@ class Database:
         return response[0]
 
     async def get_name(self, user_id: int) -> str:
-        return await self.pool.fetchval(f"SELECT name FROM Users WHERE user_id={user_id}")
+        return await self.pool.fetchval("SELECT name FROM Users WHERE user_id=$1", user_id)
 
     async def get_lang(self, user_id: int) -> str:
-        return await self.pool.fetchval(f"SELECT lang FROM Users WHERE user_id={user_id}")
+        return await self.pool.fetchval("SELECT lang FROM Users WHERE user_id=$1", user_id)
