@@ -19,6 +19,6 @@ jobs:
       - if: ${{ github.event.workflow_run.conclusion == 'success' }}
         id: automerge
         name: Automerge Dependabot PR
-        uses: "pascalgn/automerge-action@v0.15.6"
+        uses: "pascalgn/automerge-action@v0.16.0"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
