@@ -1,51 +1,144 @@
 version: "3"
 
 services:
+  bot:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: bot
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - app
+    depends_on:
+      - pgbouncer
+      - redis
+
+  admin:
+    build:
+      context: .
+      dockerfile: ./admin/Dockerfile
+    container_name: admin
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - ${ADMIN_PORT}:${ADMIN_PORT}
+    networks:
+      - app
+    depends_on:
+      - bot
 
   postgres:
-    container_name: postgres-bot
-    image: postgres:12-alpine
+    image: postgres:14-alpine
+    container_name: postgres
     restart: always
     env_file:
       - .env
     environment:
-      - POSTGRES_PASSWORD=${PG_PASSWORD}
-      - POSTGRES_USER=${PG_USER}
-      - POSTGRES_DB=${PG_NAME}
-      - PGDATA=${PG_DATA}
-    ports:
-      - ${PG_PORT}:${PG_PORT}
-    expose:
-      - ${PG_PORT}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+      - PGDATA='/var/lib/postgresql/data/pgdata'
+    networks:
+      - app
     volumes:
-      - /usr/src/app/data:/var/lib/postgresql/data/pgdata
+      - postgres-data:/var/lib/postgresql/data
+
+  pgbouncer:
+    image: edoburu/pgbouncer
+    container_name: pgbouncer
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASS}
+      - DB_HOST=postgres
+      - POOL_MODE=session
+      - MAX_DB_CONNECTIONS=100
+      - DEFAULT_POOL_SIZE=40
+      - ADMIN_USERS=postgres,${DB_USER}
+      - AUTH_TYPE=scram-sha-256
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    depends_on:
+      - postgres
+    networks:
+      - app
 
   redis:
-    container_name: redis-bot
-    image: redis:5-alpine
+    image: redis:7-alpine
+    container_name: redis
     restart: always
     env_file:
       - .env
     ports:
       - ${REDIS_PORT}:${REDIS_PORT}
-    expose:
-      - ${REDIS_PORT}
+    networks:
+      - app
     volumes:
-      - /usr/src/app/data:/bitnami/redis/data
+      - redis-data:/bitnami/redis/data
+    #command: /bin/sh -c "redis-server --requirepass $${REDIS_PASS:?REDIS_PASS variable is not set}"
 
-  bot:
-    container_name: telegram-bot
-    build: .
+  # MONITORING
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    restart: unless-stopped
+    ports:
+      - 9100:9100
+    networks:
+      - monitoring
+
+  prometheus:
+    image: prom/prometheus:v2.43.0
+    container_name: prometheus
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - ${PROMETHEUS_PORT}:${PROMETHEUS_PORT}
+    depends_on:
+      - bot
+    volumes:
+      - ./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+      - "--web.enable-lifecycle"
+
+  grafana:
+    image: grafana/grafana:8.5.22
+    container_name: grafana
     restart: always
     env_file:
       - .env
-    links:
-      - postgres
-      - redis
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+      - GF_INSTALL_PLUGINS=grafana-clock-panel
+    ports:
+      - ${GRAFANA_PORT}:${GRAFANA_PORT}
     depends_on:
-      - postgres
-      - redis
+      - prometheus
+    volumes:
+      - ./configs/grafana:/etc/grafana/provisioning/datasources
+      - grafana-data:/var/lib/grafana
+    user: "0"
+
+networks:
+  app:
+    driver: bridge
+  monitoring:
+    driver: bridge
 
 volumes:
-  postgres-data:
-  redis-data:
+  postgres-data: {}
+  redis-data: {}
+  prometheus-data: {}
+  grafana-data: {}
