@@ -1,9 +1,0 @@
-[flake8]
-exclude = .git,__pycache__,init.sql
-ignore = B305
-
-max-complexity = 10
-max-line-length = 120
-
-application-import-names = bot
-inline-quotes = "

@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS Users(
-    user_id BIGSERIAL PRIMARY KEY,
-    name VARCHAR(32),
-    lang VARCHAR(20)
-);

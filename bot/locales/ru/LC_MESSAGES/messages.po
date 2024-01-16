@@ -1,0 +1,75 @@
+# Russian translations for messages..
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the messages. project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: messages. VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-01-15 12:58+0400\n"
+"PO-Revision-Date: 2024-01-15 12:59+0400\n"
+"Last-Translator: \n"
+"Language-Team: ru <LL@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Generated-By: Babel 2.13.1\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: bot/handlers/export_users.py:29
+msgid "user counter: <b>{count}</b>"
+msgstr "кол-во пользователей: <b>{count}</b>"
+
+#: bot/handlers/info.py:11
+msgid "about"
+msgstr "ℹ️ <b>[About]</b>\\"
+
+#: bot/handlers/menu.py:13 bot/handlers/start.py:16
+msgid "title main keyboard"
+msgstr "📒 <b>Главное меню</b>."
+
+#: bot/handlers/support.py:13
+msgid "support text"
+msgstr "🤝 Поддержка"
+
+#: bot/keyboards/inline/contacts.py:11 bot/keyboards/inline/contacts.py:22
+#: bot/keyboards/inline/menu.py:12
+msgid "support button"
+msgstr "Support"
+
+#: bot/keyboards/inline/contacts.py:23
+msgid "back button"
+msgstr "🔙 Вернуться назад"
+
+#: bot/keyboards/inline/menu.py:9
+msgid "wallet button"
+msgstr "👛 Мой кошелёк"
+
+#: bot/keyboards/inline/menu.py:10
+msgid "premium button"
+msgstr "🆙 Получить PREMIUM"
+
+#: bot/keyboards/inline/menu.py:11
+msgid "info button"
+msgstr "Info"
+
+#: bot/middlewares/auth.py:41
+msgid "first message"
+msgstr ""
+"👋 <b>Добро пожаловать в бот.</b>\n\n"
+"Чтобы начать пользоваться ботом можете начать с /menu"
+
+#~ msgid ""
+#~ "👋 <b>Добро пожаловать в бот.</b>\n"
+#~ "<i>Это сообщение появляет только один раз</i>\n"
+#~ "\n"
+#~ "Чтобы начать пользоваться ботом можете начать с /menu"
+#~ msgstr ""
+#~ "👋 <b>Добро пожаловать в бот.</b>\n"
+#~ "<i>Это сообщение появляется только один раз</i>\n"
+#~ "\n"
+#~ "Чтобы начать пользоваться ботом можете начать с /menu"

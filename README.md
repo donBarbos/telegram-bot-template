@@ -1,72 +1,176 @@
-<h1 align="center"><em>Telegram bot.</em></h1>
+<h1 align="center"><em>Telegram bot template</em></h1>
+
+<h3 align="center">
+  Best way to create a scalable telegram bot with analytics
+</h3>
 
 <p align="center">
-<a href="https://github.com/donBarbos/telegram-bot-template/actions/workflows/checks.yml"><img src="https://img.shields.io/github/actions/workflow/status/donBarbos/telegram-bot-template/checks.yml?label=checks&style=plastic" alt="Checking Status"></a>
-<a href="https://github.com/donBarbos/telegram-bot-template/actions/workflows/docker-image.yml"><img src="https://img.shields.io/github/actions/workflow/status/donBarbos/telegram-bot-template/docker-image.yml?label=docker%20image&style=plastic" alt="Docker Build Status"></a>
-<a href="https://www.python.org/downloads"><img src="https://img.shields.io/badge/Python-3.7%2B-blue?style=plastic" alt="Python"></a>
-<a href="https://github.com/donBarbos/telegram-bot-template/blob/master/LICENSE"><img src="https://img.shields.io/github/license/donBarbos/telegram-bot-template?style=plastic" alt="License"></a>
-<a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg?style=plastic" alt="Code style"></a>
+  <a href="https://github.com/donBarbos/telegram-bot-template/tags"><img alt="GitHub tag (latest SemVer)" src="https://img.shields.io/github/v/tag/donBarbos/telegram-bot-template"></a>
+  <a href="https://github.com/donBarbos/telegram-bot-template/actions/workflows/checks.yml"><img src="https://img.shields.io/github/actions/workflow/status/donBarbos/telegram-bot-template/checks.yml?label=linters" alt="Linters Status"></a>
+  <a href="https://github.com/donBarbos/telegram-bot-template/actions/workflows/docker-image.yml"><img src="https://img.shields.io/github/actions/workflow/status/donBarbos/telegram-bot-template/docker-image.yml?label=docker%20image" alt="Docker Build Status"></a>
+  <a href="https://www.python.org/downloads"><img src="https://img.shields.io/badge/python-3.10%2B-blue" alt="Python"></a>
+  <a href="https://github.com/donBarbos/telegram-bot-template/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-LGPLv3-blue.svg" alt="License"></a>
+  <a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" alt="Code style"></a>
 <p>
 
-## 🚀 Getting Started
+## ✨ Features
 
-### Running on Local Machine
+-   [x] Admin Panel based on [`Flask-Admin-Dashboard`](https://github.com/jonalxh/Flask-Admin-Dashboard/) ([`Flask-Admin`](https://flask-admin.readthedocs.io/) + [`AdminLTE`](https://adminlte.io/) = ❤️ )
+-   [x] Product Analytics System: using [`Amplitude`](http://amplitude.com/) or [`Posthog`](https://posthog.com/) or [`Google Analytics`]()
+-   [x] Performance Monitoring System: using [`Prometheus`](https://prometheus.io/) and [`Grafana`](https://grafana.com/)
+-   [x] Tracking System: using [`Sentry`](https://sentry.io/)
+-   [x] Seamless use of `Docker` and `Docker Compose`
+-   [x] Export all users in `.csv` (or `.xlsx`, `.json`, `yaml` from admin panel)
+-   [x] Configured CI pipeline from git hooks to github actions
+-   [x] [`SQLAlchemy V2`](https://pypi.org/project/SQLAlchemy/) is used to communicate with the database
+-   [x] Ability to cache using decorator
+-   [x] Convenient validation using [`Pydantic V2`](https://pypi.org/project/pydantic/)
+-   [x] Internationalization (i18n) using GNU gettex
 
--   install dependencies using [Poetry](https://python-poetry.org "python package manager")
-    ```
-    poetry install
-    ```
+## 🚀 How to Use
+
+### 🐳 Running in Docker _(recommended method)_
+
 -   configure environment variables in `.env` file
 
--   start bot in virtual environment
+-   start services
+
+    ```bash
+    docker compose up -d --build
     ```
+
+### 💻 Running on Local Machine
+
+-   install dependencies using [Poetry](https://python-poetry.org "python package manager")
+
+    ```bash
+    poetry install
+    ```
+
+-   start the necessary services (at least the database and redis)
+
+-   configure environment variables in `.env` file
+
+-   start telegram bot
+
+    ```bash
     poetry run python -m bot
     ```
 
-### Launch in Docker
+-   start admin panel
 
--   configure environment variables in `.env` file
-
--   start virtual environment
-    ```
-    poetry shell
-    ```
--   building the docker image
-    ```
-    docker-compose build
-    ```
--   start service
-    ```
-    docker-compose up -d
+    ```bash
+    poetry run gunicorn -c admin/gunicorn_conf.py
     ```
 
 ## 🌍 Environment variables
 
-|    variables     | description                                               |
-| :--------------: | --------------------------------------------------------- |
-|   `BOT_TOKEN`    | Telegram bot API token                                    |
-|    `PG_HOST`     | hostname or an IP address PostgreSQL database             |
-|    `PG_NAME`     | the name of the PostgreSQL database                       |
-|  `PG_PASSWORD`   | password used to authenticate                             |
-|    `PG_PORT`     | connection port number (defaults to 5432 if not provided) |
-|    `PG_USER`     | the username used to authenticate                         |
-|   `REDIS_HOST`   | hostname or an IP address Redis database                  |
-| `REDIS_PASSWORD` | Redis database password, empty by default                 |
-|   `REDIS_PORT`   | port from Redis database                                  |
+to launch the bot you only need a token bot, database and redis settings, everything else can be left out
 
-> _I use Redis for Finite State Machine, and PostgreSQL as Database_
+| name                     | description                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------------- |
+| `BOT_TOKEN`              | Telegram bot API token                                                                      |
+| `RATE_LIMIT`             | Maximum number of requests allowed per minute for rate limiting                             |
+| `DEBUG`                  | Enable or disable debugging mode (e.g., `True` or `False`)                                  |
+| `USE_WEBHOOK`            | Flag to indicate whether the bot should use a webhook for updates (e.g., `True` or `False`) |
+| `APP_HOST`               | Hostname or IP address for the main application                                             |
+| `APP_PORT`               | Port number for the main application                                                        |
+| `ADMIN_HOST`             | Hostname or IP address for the admin panel                                                  |
+| `ADMIN_PORT`             | Port number for the admin panel                                                             |
+| `DEFAULT_ADMIN_EMAIL`    | Default email for the admin user                                                            |
+| `DEFAULT_ADMIN_PASSWORD` | Default password for the admin user                                                         |
+| `SECURITY_PASSWORD_HASH` | Hashing algorithm for user passwords (e.g., `bcrypt`)                                       |
+| `SECURITY_PASSWORD_SALT` | Salt value for user password hashing                                                        |
+| `DB_HOST`                | Hostname or IP address of the PostgreSQL database                                           |
+| `DB_PORT`                | Port number for the PostgreSQL database                                                     |
+| `DB_USER`                | Username for authenticating with the PostgreSQL database                                    |
+| `DB_PASS`                | Password for authenticating with the PostgreSQL database                                    |
+| `DB_NAME`                | Name of the PostgreSQL database                                                             |
+| `REDIS_HOST`             | Hostname or IP address of the Redis database                                                |
+| `REDIS_PORT`             | Port number for the Redis database                                                          |
+| `REDIS_PASS`             | Password for authenticating with the Redis database                                         |
+| `SENTRY_DSN`             | Sentry DSN (Data Source Name) for error tracking                                            |
+| `AMPLITUDE_API_KEY`      | API key for Amplitude analytics                                                             |
+| `POSTHOG_API_KEY`        | API key for PostHog analytics                                                               |
+| `PROMETHEUS_PORT`        | Port number for the Prometheus monitoring system                                            |
+| `GRAFANA_PORT`           | Port number for the Grafana monitoring and visualization platform                           |
+| `GRAFANA_ADMIN_USER`     | Admin username for accessing Grafana                                                        |
+| `GRAFANA_ADMIN_PASSWORD` | Admin password for accessing Grafana                                                        |
+
+## 📂 Project Folder Structure
+
+```bash
+.
+├── admin # Source code for admin panel
+│   ├── __init__.py
+│   ├── app.py # Main application module for the admin panel
+│   ├── config.py # Configuration module for the admin panel
+│   ├── Dockerfile # Dockerfile for admin panel
+│   ├── gunicorn_conf.py # Gunicorn configuration file for serving admin panel
+│   ├── static # Folder for static assets
+│   │   ├── css/
+│   │   ├── fonts/
+│   │   ├── img/
+│   │   ├── js/
+│   │   └── plugins/
+│   ├── templates # HTML templates for the admin panel
+│   │   ├── admin/
+│   │   ├── index.html
+│   │   ├── my_master.html
+│   │   └── security/
+│   └── views # Custom View modules for handling web requests
+│       ├── __init__.py
+│       └── users.py
+│
+├── bot # Source code for Telegram Bot
+│   ├── __init__.py
+│   ├── __main__.py # Main entry point to launch the bot
+│   ├── analytics/ # Interaction with analytics services (e.g., Amplitude or Google Analytics)
+│   ├── cache/ # Logic for using Redis cache
+│   ├── core/ # Settings for application and other core components
+│   ├── database/ # Database functions and SQLAlchemy Models
+│   ├── filters/ # Filters for processing incoming messages or updates
+│   ├── handlers/ # Handlers for processing user commands and interactions
+│   ├── keyboards # Modules for creating custom keyboards
+│   │   ├── default_commands.py # Default command keyboards
+│   │   ├── __init__.py
+│   │   ├── inline/ # Inline keyboards
+│   │   └── reply/ # Reply keyboards
+│   ├── locales/ # Localization files for supporting multiple languages
+│   ├── middlewares/ # Middleware modules for processing incoming updates
+│   ├── services/ # Business logic for application
+│   └── utils/ # Utility functions and helper modules
+│
+├── configs # Config folder for Monitoring (Prometheus, Node-exporter and Grafana)
+│   ├── grafana # Configuration files for Grafana
+│   │   └── datasource.yml
+│   └── prometheus # Configuration files for Prometheus
+│       └── prometheus.yml
+│
+├── docker-compose.yml # Docker Compose configuration file for orchestrating containers
+├── Dockerfile # Dockerfile for Telegram Bot
+├── LICENSE.md # License file for the project
+├── poetry.lock # Lock file for Poetry dependency management
+├── pyproject.toml # Configuration file for Python projects, including build tools, dependencies, and metadata
+└── README.md # Documentation
+```
 
 ## 🔧 Tech Stack
 
--   `aiogram` — asynchronous framework for Telegram Bot API
+-   `sqlalchemy` — object-relational mapping (ORM) library that provides a set of high-level API for interacting with relational databases
 -   `asyncpg` — asynchronous PostgreSQL database client library
--   `poetry` — development workflow
+-   `aiogram` — asynchronous framework for Telegram Bot API
+-   `flask-admin` — simple and extensible administrative interface framework
 -   `loguru` — third party library for logging in Python
+-   `poetry` — development workflow
 -   `docker` — to automate deployment
 -   `postgres` — powerful, open source object-relational database system
--   `redis` — an in-memory data structure store
+-   `pgbouncer` — connection pooler for PostgreSQL database
+-   `redis` — in-memory data structure store used as a cache and FSM
+-   `prometheus` — time series database for collecting metrics from various systems
+-   `grafana` — visualization and analysis from various sources, including Prometheus
 
-## 👷🏾 Contributing
+## 👷 Contributing
 
 First off, thanks for taking the time to contribute! Contributions are what makes the open-source community such an amazing place to learn, inspire, and create. Any contributions you make will benefit everybody else and are greatly appreciated.
 
@@ -80,7 +184,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 ## 📝 License
 
-Distributed under the GPL-3.0 license. See `LICENSE` for more information.
+Distributed under the LGPL-3.0 license. See [`LICENSE`](./LICENSE) for more information.
 
 ## 📢 Contact
 

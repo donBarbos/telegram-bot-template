@@ -3,7 +3,7 @@
 
 # exclusion
 !/bot/
+!/admin/
 
-!/.env
 !/poetry.lock
 !/pyproject.toml
