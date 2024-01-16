@@ -2,7 +2,7 @@ from __future__ import annotations
 from functools import wraps
 from typing import TYPE_CHECKING
 
-from bot.cache.serialization import PickleSerializer, AbstractSerializer
+from bot.cache.serialization import AbstractSerializer, PickleSerializer
 from bot.core.loader import redis_client
 
 if TYPE_CHECKING:

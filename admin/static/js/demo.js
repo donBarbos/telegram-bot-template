@@ -102,7 +102,7 @@
       + "<p>Toggle between dark and light skins for the right sidebar</p>"
       + "</div>"
   );
- 
+
   tab_pane.append(demo_settings);
   $("#control-sidebar-settings-tab").after(tab_pane);
 
@@ -471,5 +471,5 @@
     });
 
   }
- 
+
 })(jQuery, $.AdminLTE);
