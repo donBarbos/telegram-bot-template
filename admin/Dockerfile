@@ -7,7 +7,7 @@ ENV POETRY_NO_INTERACTION=1 \
     POETRY_CACHE_DIR="/tmp/poetry_cache" \
     POETRY_VERSION=1.7.0
 
-WORKDIR /usr/src/app 
+WORKDIR /usr/src/app
 
 COPY . .
 
@@ -16,6 +16,10 @@ RUN pip install --no-cache-dir "poetry==$POETRY_VERSION" \
     && pip uninstall -y poetry \
     && rm -rf /root/.cache \
     && rm -rf $POETRY_CACHE_DIR \
-    && rm -rf /usr/src/app/__pycache__
+    && rm -rf /usr/src/app/__pycache__ \
+    && adduser -D appuser \
+    && chown -R appuser:appuser .
+
+USER appuser
 
 CMD ["gunicorn", "-c", "admin/gunicorn_conf.py"]
