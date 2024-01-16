@@ -1,4 +1,4 @@
-name: Checks
+name: Run linter checks
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.7', '3.8', '3.9', '3.10']
+        python-version: ['3.8', '3.9', '3.10', '3.11']
 
     steps:
       - uses: actions/checkout@v3
@@ -27,8 +27,11 @@ jobs:
           python -m pip install poetry
           poetry install
 
-      - name: Lint check
-        run: poetry run flake8 bot
+      - name: Lint with ruff
+        run: poetry run ruff .
+
+      - name: Format with ruff
+        run: poetry run ruff format .
 
 #      - name: Type Hints check
 #        run: poetry run mypy .
