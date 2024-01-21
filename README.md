@@ -29,6 +29,14 @@
 
 ## 🚀 How to Use
 
+### Compile Locales
+
+Following script will compile all locales in `locales` folder
+
+```bash
+./compile_locales.sh
+```
+
 ### 🐳 Running in Docker _(recommended method)_
 
 -   configure environment variables in `.env` file

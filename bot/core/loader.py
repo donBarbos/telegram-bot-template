@@ -8,8 +8,6 @@ from bot.core.config import I18N_DOMAIN, LOCALES_DIR, settings
 
 token = settings.BOT_TOKEN
 
-cryptobot_api_token = settings.CRYPTOBOT_API_TOKEN
-
 bot = Bot(token=token, parse_mode=ParseMode.HTML)
 
 redis_client = Redis(

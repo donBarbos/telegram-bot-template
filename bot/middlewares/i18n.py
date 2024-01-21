@@ -1,12 +1,15 @@
-"""1. Собираем все текста с проекта
+"""
+./compile_locales.sh
+
+1. Get all texts
 pybabel extract --input-dirs=. -o bot/locales/messages.pot --project=messages.
 
-2. Создаем файлы с переводами на разные языки
+2. Init translations
 pybabel init -i bot/locales/messages.pot -d bot/locales -D messages -l en
 pybabel init -i bot/locales/messages.pot -d bot/locales -D messages -l ru
 pybabel init -i bot/locales/messages.pot -d bot/locales -D messages -l uk
 
-3. После того как все текста переведены, нужно скомпилировать все переводы
+3. Compile translations
 pybabel compile -d bot/locales -D messages --statistics
 
 pybabel update -i bot/locales/messages.pot -d bot/locales -D messages

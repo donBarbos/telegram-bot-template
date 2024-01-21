@@ -1,14 +1,14 @@
-# English translations for messages..
+# English translations for messages.
 # Copyright (C) 2024 ORGANIZATION
-# This file is distributed under the same license as the messages. project.
+# This file is distributed under the same license as the messages project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: messages. VERSION\n"
+"Project-Id-Version: messages VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-01-15 12:58+0400\n"
-"PO-Revision-Date: 2024-01-14 14:51+0400\n"
+"POT-Creation-Date: 2024-01-21 13:09+0100\n"
+"PO-Revision-Date: 2024-01-21 13:09+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -16,85 +16,46 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.13.1\n"
+"Generated-By: Babel 2.14.0\n"
 
 #: bot/handlers/export_users.py:29
 msgid "user counter: <b>{count}</b>"
-msgstr "user counter: <b>{count}"
+msgstr ""
 
 #: bot/handlers/info.py:11
 msgid "about"
-msgstr "ℹ️ <b>[About]</b>\\"
+msgstr ""
 
-#: bot/handlers/menu.py:13 bot/handlers/start.py:16
+#: bot/handlers/menu.py:13
 msgid "title main keyboard"
-msgstr "📒 <b>Menu</b>."
+msgstr ""
+
+#: bot/handlers/start.py:15
+msgid "first message"
+msgstr ""
 
 #: bot/handlers/support.py:13
 msgid "support text"
-msgstr "🤝 Support"
+msgstr ""
 
 #: bot/keyboards/inline/contacts.py:11 bot/keyboards/inline/contacts.py:22
 #: bot/keyboards/inline/menu.py:12
 msgid "support button"
-msgstr "Support"
+msgstr ""
 
 #: bot/keyboards/inline/contacts.py:23
 msgid "back button"
-msgstr "🔙 Back"
+msgstr ""
 
 #: bot/keyboards/inline/menu.py:9
 msgid "wallet button"
-msgstr "👛 Wallet"
+msgstr ""
 
 #: bot/keyboards/inline/menu.py:10
 msgid "premium button"
-msgstr "🆙 Get PREMIUM"
+msgstr ""
 
 #: bot/keyboards/inline/menu.py:11
 msgid "info button"
-msgstr "Info"
-
-#: bot/middlewares/auth.py:41
-msgid "first message"
 msgstr ""
-"👋 <b>Welcome to the bot.</b>\n\n"
-"To start using the bot you can start with /menu"
 
-#~ msgid ""
-#~ "ℹ️ <b>[About]</b>\n"
-#~ "Работа нашего бота - это результат "
-#~ "деятельности профессионалов с многолетним "
-#~ "опытом по всему миру: от Анголии "
-#~ "до Австралии.\n"
-#~ "\n"
-#~ "Мы имеем доверенных лиц во многих "
-#~ "странах мира, благодаря чему используем "
-#~ "возможность покупки криптовалюты за валюту "
-#~ "страны где находится доверенное лицо.\n"
-#~ "Написанный нами софт, позволяет видеть "
-#~ "эклюзивно-выгодные связки по всему миру, "
-#~ "анализируя каждые пару секунд десятки "
-#~ "тысяч показателей.\n"
-#~ "\n"
-#~ "Например:\n"
-#~ "Покупка Bitcoin на бирже в Японни "
-#~ "Kraken за национальную валюту Японии -"
-#~ " йены, может стоить до 20% дешевле,"
-#~ " чем покупка Bitcoin на этой же "
-#~ "бирже В США или Европе за "
-#~ "национальную валюту Доллар или Евро.\n"
-#~ "Продать же этот купленный Bitcoin можно"
-#~ " на другой бирже, получив взамен "
-#~ "национальную валюту Южной Корен - Воны"
-#~ " (₩), обменяв которые обратно на свою"
-#~ " валюту, Вы и получаете проценты "
-#~ "заработка.\n"
-#~ "<b>Мы благодарны каждому нашему пользователю"
-#~ " потому что мы зарабатываем на каждой"
-#~ " вашей сделке, однако связки отмирают "
-#~ "при пропаже в них ликвидности, из-за "
-#~ "чего нам приходится ограничивать количество"
-#~ " связок, которые вы можете прокрутить "
-#~ "в день.</b>"
-#~ msgstr ""

@@ -68,7 +68,6 @@ class CacheSettings(EnvBaseSettings):
 class Settings(BotSettings, DBSettings, CacheSettings):
     DEBUG: bool = False
 
-    CRYPTOBOT_API_TOKEN: str
     SENTRY_DSN: str | None = None
 
     AMPLITUDE_API_KEY: str
