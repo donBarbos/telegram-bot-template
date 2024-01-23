@@ -39,6 +39,12 @@
     docker compose up -d --build
     ```
 
+-   make migrations
+
+    ```bash
+    docker compose exec bot alembic upgrade head
+    ```
+
 ### 💻 Running on Local Machine
 
 -   install dependencies using [Poetry](https://python-poetry.org "python package manager")
@@ -61,6 +67,12 @@
 
     ```bash
     poetry run gunicorn -c admin/gunicorn_conf.py
+    ```
+
+-   make migrations
+
+    ```bash
+    poetry run alembic upgrade head
     ```
 
 ## 🌍 Environment variables
