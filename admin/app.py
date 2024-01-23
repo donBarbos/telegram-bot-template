@@ -31,17 +31,17 @@ cache = Cache(app)
 babel = Babel(app)
 
 # Define models
-roles_users = db.Table(
-    "roles_users",
-    db.Column("user_id", db.Integer(), db.ForeignKey("user._id")),
-    db.Column("role_id", db.Integer(), db.ForeignKey("role._id")),
+roles_admins = db.Table(
+    "roles_admins",
+    db.Column("admin_id", db.Integer(), db.ForeignKey("admin.id")),
+    db.Column("role_id", db.Integer(), db.ForeignKey("role.id")),
 )
 
 
 class RoleModel(db.Model, RoleMixin):
     __tablename__ = "role"
 
-    _id = db.Column(db.Integer(), primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(80), unique=True)
     description = db.Column(db.String(255))
 
@@ -49,10 +49,10 @@ class RoleModel(db.Model, RoleMixin):
         return self.name
 
 
-class UserModel(db.Model, UserMixin):
-    __tablename__ = "user"
+class AdminModel(db.Model, UserMixin):
+    __tablename__ = "admin"
 
-    _id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
     email = db.Column(db.String(255), unique=True, nullable=False)
@@ -60,15 +60,15 @@ class UserModel(db.Model, UserMixin):
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime(), default=datetime.utcnow)
     fs_uniquifier = db.Column(db.String(255), unique=True)
-    roles = db.relationship("RoleModel", secondary=roles_users, backref=db.backref("users", lazy="dynamic"))
+    roles = db.relationship("RoleModel", secondary=roles_admins, backref=db.backref("admins", lazy="dynamic"))
 
     def __str__(self) -> str:
         return self.email
 
 
 # Setup Flask-Security
-user_datastore = SQLAlchemyUserDatastore(db, UserModel, RoleModel)
-security = Security(app, user_datastore)
+admin_datastore = SQLAlchemyUserDatastore(db, AdminModel, RoleModel)
+security = Security(app, admin_datastore)
 
 
 # Create customized model view class
@@ -100,7 +100,7 @@ class RoleView(ModelView):
         return None
 
 
-class UserView(RoleView):
+class AdminView(RoleView):
     can_view_details = True
     can_delete = True
     can_edit = True
@@ -152,7 +152,7 @@ def index() -> str:
     return render_template("index.html")
 
 
-# Инициализация админ-панели
+# Initializing the admin panel
 admin = Admin(
     app,
     name="Telegram Bot",
@@ -178,8 +178,8 @@ admin.add_view(
 )
 
 admin.add_view(
-    UserView(
-        UserModel,
+    AdminView(
+        AdminModel,
         db.session,
         menu_icon_type=ICON_TYPE_FONT_AWESOME,
         menu_icon_value="fa-black-tie",
@@ -212,22 +212,22 @@ def security_context_processor() -> dict[str, Any]:
 
 def init_db() -> None:
     inspector = inspect(db.engine)
-    if inspector.has_table("user") and inspector.has_table("role"):
+    if inspector.has_table("admin") and inspector.has_table("role"):
         return
 
     db.create_all()
 
-    user_role = RoleModel(name="user", description="does not have access to other administrators")
-    super_user_role = RoleModel(name="superuser", description="has access to manage all administrators")
-    db.session.add(user_role)
-    db.session.add(super_user_role)
+    admin_role = RoleModel(name="user", description="does not have access to other administrators")
+    super_admin_role = RoleModel(name="superuser", description="has access to manage all administrators")
+    db.session.add(admin_role)
+    db.session.add(super_admin_role)
     db.session.commit()
 
-    user_datastore.create_user(
+    admin_datastore.create_user(
         first_name="Admin",
         email=app.config.get("DEFAULT_ADMIN_EMAIL"),
         password=hash_password(str(app.config.get("DEFAULT_ADMIN_PASSWORD"))),
-        roles=[user_role, super_user_role],
+        roles=[admin_role, super_admin_role],
     )
 
     db.session.commit()
