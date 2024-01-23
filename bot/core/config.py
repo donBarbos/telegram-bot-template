@@ -68,11 +68,9 @@ class CacheSettings(EnvBaseSettings):
 class Settings(BotSettings, DBSettings, CacheSettings):
     DEBUG: bool = False
 
-    CRYPTOBOT_API_TOKEN: str
     SENTRY_DSN: str | None = None
 
-    AMPLITUDE_API_KEY: str
-    POSTHOG_API_KEY: str
+    AMPLITUDE_API_KEY: str  # or for example it could be POSTHOG_API_KEY
 
     PROMETHEUS_PORT: int = 9090
     GRAFANA_PORT: int = 3000
