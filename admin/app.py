@@ -119,6 +119,11 @@ class AdminView(RoleView):
 
 # Flask views
 @cache.cached()
+def get_orders_count() -> int:
+    return 0
+
+
+@cache.cached()
 def get_user_count() -> int:
     return db.session.query(AppUserModel).count()
 
@@ -134,7 +139,7 @@ class CustomAdminIndexView(AdminIndexView):
     def index(self) -> str:
         days_before: int = 1
         period_start = datetime.now(timezone.utc) - timedelta(days=days_before)
-        order_count = 0
+        order_count = get_orders_count()
         user_count = get_user_count()
         new_user_count = get_new_user_count(days_before)
 
