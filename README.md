@@ -23,6 +23,7 @@
 -   [x] Export all users in `.csv` (or `.xlsx`, `.json`, `yaml` from admin panel)
 -   [x] Configured CI pipeline from git hooks to github actions
 -   [x] [`SQLAlchemy V2`](https://pypi.org/project/SQLAlchemy/) is used to communicate with the database
+-   [x] Database Migrations with [Alembic](https://pypi.org/project/alembic/)
 -   [x] Ability to cache using decorator
 -   [x] Convenient validation using [`Pydantic V2`](https://pypi.org/project/pydantic/)
 -   [x] Internationalization (i18n) using GNU gettex
