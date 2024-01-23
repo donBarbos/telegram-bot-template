@@ -2,14 +2,11 @@ from __future__ import annotations
 import asyncio
 
 import sentry_sdk
-
-# from bot.core.data_structure import TransferData
 from loguru import logger
 from sentry_sdk.integrations.loguru import LoggingLevels, LoguruIntegration
 
 from bot.core.config import settings
 from bot.core.loader import bot, dp
-from bot.database.database import create_tables, get_engine
 from bot.handlers import get_handlers_router
 from bot.keyboards.default_commands import remove_default_commands, set_default_commands
 from bot.middlewares import register_middlewares
@@ -23,8 +20,6 @@ async def startup() -> None:
     dp.include_router(get_handlers_router())
 
     await set_default_commands(bot)
-
-    # await db.create_tables()
 
     if settings.USE_WEBHOOK:
         webhook_url = (
@@ -98,9 +93,6 @@ async def main() -> None:
 
     dp.startup.register(startup)
     dp.shutdown.register(shutdown)
-
-    engine = get_engine()
-    await create_tables(engine)
 
     if settings.USE_WEBHOOK:
         pass
