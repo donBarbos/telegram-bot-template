@@ -1,8 +1,9 @@
 # ruff: noqa: S301
-import json
 import pickle
 from abc import ABC, abstractmethod
 from typing import Any
+
+import orjson
 
 
 class AbstractSerializer(ABC):
@@ -29,9 +30,9 @@ class PickleSerializer(AbstractSerializer):
 class JSONSerializer(AbstractSerializer):
     "Serialize values using JSON."
 
-    def serialize(self, obj: Any) -> str:
-        return json.dumps(obj)
+    def serialize(self, obj: Any) -> bytes:
+        return orjson.dumps(obj)
 
     def deserialize(self, obj: str) -> Any:
         "Deserialize values using JSON."
-        return json.loads(obj)
+        return orjson.loads(obj)

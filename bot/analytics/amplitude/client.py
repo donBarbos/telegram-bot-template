@@ -1,6 +1,6 @@
 from __future__ import annotations
-import json
 
+import orjson
 from aiohttp import ClientSession
 from loguru import logger
 
@@ -27,7 +27,7 @@ class AmplitudeTelegramLogger(AbstractAnalyticsLogger):
         async with ClientSession() as session, session.post(
             self._base_url,
             headers=self._headers,
-            data=json.dumps(data),
+            data=orjson.dumps(data),
             timeout=self._timeout,
         ) as response:
             json_response = await response.json(content_type="application/json")
