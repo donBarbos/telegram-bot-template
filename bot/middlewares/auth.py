@@ -6,6 +6,7 @@ from aiogram.types import Message
 from loguru import logger
 
 from bot.services.users import add_user, user_exists
+from bot.utils.command import find_command_argument
 
 if TYPE_CHECKING:
     from collections.abc import Awaitable, Callable
@@ -33,8 +34,10 @@ class AuthMiddleware(BaseMiddleware):
         if await user_exists(session, user.id):
             return await handler(event, data)
 
+        referrer = find_command_argument(message.text)
+
         logger.info(f"new user registration | user_id: {user.id} | message: {message.text}")
 
-        await add_user(session=session, user=user)
+        await add_user(session=session, user=user, referrer=referrer)
 
         return await handler(event, data)
