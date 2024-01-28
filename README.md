@@ -16,7 +16,7 @@
 ## ✨ Features
 
 -   [x] Admin Panel based on [`Flask-Admin-Dashboard`](https://github.com/jonalxh/Flask-Admin-Dashboard/) ([`Flask-Admin`](https://flask-admin.readthedocs.io/) + [`AdminLTE`](https://adminlte.io/) = ❤️ )
--   [x] Product Analytics System: using [`Amplitude`](https://amplitude.com/) or [`Posthog`](https://posthog.com/) or [`Google Analytics`]()
+-   [x] Product Analytics System: using [`Amplitude`](https://amplitude.com/) or [`Posthog`](https://posthog.com/) or [`Google Analytics`](https://analytics.google.com)
 -   [x] Performance Monitoring System: using [`Prometheus`](https://prometheus.io/) and [`Grafana`](https://grafana.com/)
 -   [x] Tracking System: using [`Sentry`](https://sentry.io/)
 -   [x] Seamless use of `Docker` and `Docker Compose`
@@ -154,12 +154,20 @@ to launch the bot you only need a token bot, database and redis settings, everyt
 │   ├── services/ # Business logic for application
 │   └── utils/ # Utility functions and helper modules
 │
+├── migrations # Database Migrations managed by Alembic
+│   ├── env.py # Environment setup for Alembic
+│   ├── __init__.py
+│   ├── README
+│   ├── script.py.mako # Script template for generating migrations
+│   └── versions/ # Folder containing individual migration scripts
+│
 ├── configs # Config folder for Monitoring (Prometheus, Node-exporter and Grafana)
 │   ├── grafana # Configuration files for Grafana
 │   │   └── datasource.yml
 │   └── prometheus # Configuration files for Prometheus
 │       └── prometheus.yml
 │
+├── alembic.ini # Configuration file for migrations
 ├── docker-compose.yml # Docker Compose configuration file for orchestrating containers
 ├── Dockerfile # Dockerfile for Telegram Bot
 ├── LICENSE.md # License file for the project
