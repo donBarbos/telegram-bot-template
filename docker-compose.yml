@@ -9,6 +9,8 @@ services:
     restart: always
     env_file:
       - .env
+    ports:
+      - ${WEBHOOK_PORT}:${WEBHOOK_PORT}
     networks:
       - app
     depends_on:
@@ -33,7 +35,7 @@ services:
     depends_on:
       - bot
     volumes:
-        - ./admin:/usr/src/app/admin
+      - ./admin:/usr/src/app/admin
 
   postgres:
     image: postgres:14-alpine
