@@ -11,8 +11,12 @@ from bot.handlers import get_handlers_router
 from bot.keyboards.default_commands import remove_default_commands, set_default_commands
 from bot.middlewares import register_middlewares
 
+if settings.USE_WEBHOOK:
+    from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
+    from aiohttp import web
 
-async def startup() -> None:
+
+async def on_startup() -> None:
     logger.info("bot starting...")
 
     register_middlewares(dp)
@@ -20,20 +24,6 @@ async def startup() -> None:
     dp.include_router(get_handlers_router())
 
     await set_default_commands(bot)
-
-    if settings.USE_WEBHOOK:
-        webhook_url = (
-            settings.WEBHOOK_URL + settings.WEBHOOK_PATH
-            if settings.WEBHOOK_URL
-            else f"http://localhost:{settings.WEBHOOK_PORT}{settings.WEBHOOK_PATH}"
-        )
-        await bot.set_webhook(
-            webhook_url,
-            drop_pending_updates=settings.drop_pending_updates,
-            allowed_updates=dp.resolve_used_update_types(),
-        )
-    # else:
-    # await bot.delete_webhook(drop_pending_updates=settings.drop_pending_updates)
 
     bot_info = await bot.get_me()
 
@@ -54,20 +44,43 @@ async def startup() -> None:
     logger.info("bot started")
 
 
-async def shutdown() -> None:
-    """Need to close Redis and PostgreSQL connection when shutdown."""
+async def on_shutdown() -> None:
     logger.info("bot stopping...")
 
     await remove_default_commands(bot)
 
-    # await db.close_database()
     await dp.storage.close()
-
     await dp.fsm.storage.close()
+
+    await bot.delete_webhook()
     await bot.session.close()
-    # await close_orm()
 
     logger.info("bot stopped")
+
+
+async def setup_webhook() -> None:
+    await bot.set_webhook(
+        settings.webhook_url,
+        allowed_updates=dp.resolve_used_update_types(),
+        secret_token=settings.WEBHOOK_SECRET,
+    )
+
+    app = web.Application()
+
+    webhook_requests_handler = SimpleRequestHandler(
+        dispatcher=dp,
+        bot=bot,
+        secret_token=settings.WEBHOOK_SECRET,
+    )
+    webhook_requests_handler.register(app, path=settings.WEBHOOK_PATH)
+    setup_application(app, dp, bot=bot)
+
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, host=settings.WEBHOOK_HOST, port=settings.WEBHOOK_PORT)
+    await site.start()
+
+    await asyncio.Event().wait()
 
 
 async def main() -> None:
@@ -83,19 +96,20 @@ async def main() -> None:
             profiles_sample_rate=1.0,
             integrations=[sentry_loguru],
         )
+
     logger.add(
-        "logs/bot_debug.log",
+        "logs/telegram_bot.log",
         level="DEBUG",
         format="{time} | {level} | {module}:{function}:{line} | {message}",
         rotation="100 KB",
         compression="zip",
     )
 
-    dp.startup.register(startup)
-    dp.shutdown.register(shutdown)
+    dp.startup.register(on_startup)
+    dp.shutdown.register(on_shutdown)
 
     if settings.USE_WEBHOOK:
-        pass
+        await setup_webhook()
     else:
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
 
