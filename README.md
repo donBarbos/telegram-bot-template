@@ -86,8 +86,11 @@ to launch the bot you only need a token bot, database and redis settings, everyt
 | `RATE_LIMIT`             | Maximum number of requests allowed per minute for rate limiting                             |
 | `DEBUG`                  | Enable or disable debugging mode (e.g., `True` or `False`)                                  |
 | `USE_WEBHOOK`            | Flag to indicate whether the bot should use a webhook for updates (e.g., `True` or `False`) |
-| `APP_HOST`               | Hostname or IP address for the main application                                             |
-| `APP_PORT`               | Port number for the main application                                                        |
+| `WEBHOOK_BASE_URL`       | Base URL for the webhook                                                                    |
+| `WEBHOOK_PATH`           | Path to receive updates from Telegram                                                       |
+| `WEBHOOK_SECRET`         | Secret key for securing the webhook communication                                           |
+| `WEBHOOK_HOST`           | Hostname or IP address for the main application                                             |
+| `WEBHOOK_PORT`           | Port number for the main application                                                        |
 | `ADMIN_HOST`             | Hostname or IP address for the admin panel                                                  |
 | `ADMIN_PORT`             | Port number for the admin panel                                                             |
 | `DEFAULT_ADMIN_EMAIL`    | Default email for the admin user                                                            |

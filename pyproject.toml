@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "telegram-bot-template"
-version = "2.0.1"
+version = "2.0.2"
 description = "Best way to create a scalable telegram bot with analytics"
 homepage = "https://github.com/donBarbos/telegram-bot-template"
 repository = "https://github.com/donBarbos/telegram-bot-template"
