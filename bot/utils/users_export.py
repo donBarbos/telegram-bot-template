@@ -8,7 +8,7 @@ from aiogram.types import BufferedInputFile
 from bot.database.models import UserModel
 
 
-async def get_csv_with_users(users: list[UserModel]) -> BufferedInputFile:
+async def convert_users_to_csv(users: list[UserModel]) -> BufferedInputFile:
     """Export all users in csv file."""
     columns = UserModel.__table__.columns
     data = [[getattr(user, column.name) for column in columns] for user in users]

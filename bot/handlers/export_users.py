@@ -7,7 +7,7 @@ from aiogram.utils.i18n import gettext as _
 
 from bot.filters.admin import AdminFilter
 from bot.services.users import get_all_users, get_user_count
-from bot.utils.users_export import get_csv_with_users
+from bot.utils.users_export import convert_users_to_csv
 
 if TYPE_CHECKING:
     from aiogram.types import BufferedInputFile, Message
@@ -23,7 +23,7 @@ router = Router(name="export_users")
 async def export_users_handler(message: Message, session: AsyncSession) -> None:
     """Export all users in csv file."""
     all_users: list[UserModel] = await get_all_users(session)
-    document: BufferedInputFile = await get_csv_with_users(all_users)
+    document: BufferedInputFile = await convert_users_to_csv(all_users)
     count: int = await get_user_count(session)
 
     await message.answer_document(document=document, caption=_("user counter: <b>{count}</b>").format(count=count))
