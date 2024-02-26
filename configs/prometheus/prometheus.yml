@@ -15,10 +15,13 @@ scrape_configs:
     static_configs:
       - targets: ["localhost:9090"]
 
-  - job_name: "node"
+  - job_name: "node-exporter"
     static_configs:
       - targets: ["node-exporter:9100"]
 
-  - job_name: "web"
+  - job_name: "tgbot"
+    scrape_interval: 5s
     static_configs:
-      - targets: ["web:8989"]
+      - targets: ["bot:8080"]
+    metrics_path: /metrics
+    scheme: http
