@@ -65,7 +65,7 @@ services:
       - DB_PASSWORD=${DB_PASS}
       - DB_HOST=postgres
       - POOL_MODE=session
-      - MAX_DB_CONNECTIONS=100
+      - MAX_DB_CONNECTIONS=0
       - DEFAULT_POOL_SIZE=40
       - ADMIN_USERS=postgres,${DB_USER}
       - AUTH_TYPE=scram-sha-256
