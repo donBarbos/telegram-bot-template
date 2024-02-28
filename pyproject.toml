@@ -26,6 +26,7 @@ babel = "^2.13.1"
 cachetools = "^5.3.2"
 orjson = "^3.9.12"
 alembic = "^1.13.1"
+prometheus-client = "^0.20.0"
 
 [tool.poetry.group.admin.dependencies]
 gunicorn = "^21.2.0"
