@@ -7,10 +7,12 @@ from loguru import logger
 from sentry_sdk.integrations.loguru import LoggingLevels, LoguruIntegration
 
 from bot.core.config import settings
-from bot.core.loader import bot, dp
+from bot.core.loader import app, bot, dp
 from bot.handlers import get_handlers_router
+from bot.handlers.metrics import MetricsView
 from bot.keyboards.default_commands import remove_default_commands, set_default_commands
 from bot.middlewares import register_middlewares
+from bot.middlewares.prometheus import prometheus_middleware_factory
 
 if settings.USE_WEBHOOK:
     from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
@@ -23,6 +25,10 @@ async def on_startup() -> None:
     register_middlewares(dp)
 
     dp.include_router(get_handlers_router())
+
+    if settings.USE_WEBHOOK:
+        app.middlewares.append(prometheus_middleware_factory())
+        app.router.add_route("GET", "/metrics", MetricsView)
 
     await set_default_commands(bot)
 
@@ -65,8 +71,6 @@ async def setup_webhook() -> None:
         allowed_updates=dp.resolve_used_update_types(),
         secret_token=settings.WEBHOOK_SECRET,
     )
-
-    app = web.Application()
 
     webhook_requests_handler = SimpleRequestHandler(
         dispatcher=dp,

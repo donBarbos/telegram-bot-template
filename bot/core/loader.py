@@ -2,9 +2,12 @@ from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.redis import DefaultKeyBuilder, RedisStorage
 from aiogram.utils.i18n.core import I18n
+from aiohttp import web
 from redis.asyncio import ConnectionPool, Redis
 
 from bot.core.config import I18N_DOMAIN, LOCALES_DIR, settings
+
+app = web.Application()
 
 token = settings.BOT_TOKEN
 
