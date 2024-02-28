@@ -82,8 +82,5 @@ class Settings(BotSettings, DBSettings, CacheSettings):
 
     AMPLITUDE_API_KEY: str  # or for example it could be POSTHOG_API_KEY
 
-    PROMETHEUS_PORT: int = 9090
-    GRAFANA_PORT: int = 3000
-
 
 settings = Settings()
