@@ -3,8 +3,6 @@
 
 # exclusion
 !/bot/
-!/admin/
-!/migrations/
 
 !/alembic.ini
 !/poetry.lock

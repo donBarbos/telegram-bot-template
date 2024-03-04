@@ -17,7 +17,6 @@ RUN pip install --no-cache-dir "poetry==$POETRY_VERSION" \
     && pybabel compile -d bot/locales \
     && rm -rf /home/appuser/.cache \
     && rm -rf $POETRY_CACHE_DIR \
-    && rm -rf /usr/src/app/{__pycache__,admin} \
     && adduser -D appuser \
     && chown -R appuser:appuser .
 

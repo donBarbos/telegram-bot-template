@@ -16,7 +16,6 @@ RUN pip install --no-cache-dir "poetry==$POETRY_VERSION" \
     && pip uninstall -y poetry \
     && rm -rf /root/.cache \
     && rm -rf $POETRY_CACHE_DIR \
-    && rm -rf /usr/src/app/__pycache__ \
     && adduser -D appuser \
     && chown -R appuser:appuser .
 
