@@ -118,17 +118,14 @@ class AdminView(RoleView):
 
 
 # Flask views
-@cache.cached()
 def get_orders_count() -> int:
     return 0
 
 
-@cache.cached()
 def get_user_count() -> int:
     return db.session.query(AppUserModel).count()
 
 
-@cache.cached()
 def get_new_user_count(days_before: int = 1) -> int:
     period_start = datetime.now(timezone.utc) - timedelta(days=days_before)
     return db.session.query(AppUserModel).filter(AppUserModel.created_at >= period_start).count()
