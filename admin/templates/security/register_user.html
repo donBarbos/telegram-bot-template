@@ -3,26 +3,22 @@
 {% include "security/_messages.html" %}
 {% block body %}
 {{ super() }}
-<br><br><br><br>
-
-<div class="row-fluid">
+<br><br><br><br><br><br>
+<section class="content" style="height: 100vh; max-width: 800px; max-height: 800px">
     <div class="col-sm-8 col-sm-offset-2">
-    <br>
-        <div class="well">
-        <h1>Register</h1>
+        <div class="well" style="padding: 44px">
+            <h1 class="text-center">Register</h1>
             <form action="{{ url_for_security('register') }}" method="POST" name="register_user_form">
-                {{ register_user_form.hidden_tag() }}
-                {{ render_field_with_errors(register_user_form.email) }}
-                {{ render_field_with_errors(register_user_form.password) }}
-                {% if register_user_form.password_confirm %}
-                {{ render_field_with_errors(register_user_form.password_confirm) }}
-                {% endif %}
-                {{ render_field(register_user_form.submit, class="btn btn-primary") }}
+              {{ register_user_form.hidden_tag() }}
+              {{ render_field_with_errors(register_user_form.email) }}
+              {{ render_field_with_errors(register_user_form.password) }}
+              {% if register_user_form.password_confirm %}
+              {{ render_field_with_errors(register_user_form.password_confirm) }}
+              {% endif %}
+              {{ render_field(register_user_form.submit, class="btn btn-primary btn-block") }}
             </form>
-            <p>Already signed up? Please <a href="{{ url_for('security.login') }}">log in</a>.</p>
+            <p> Already have an account? <a href="{{ url_for('security.login') }}">Login</a></p>
         </div>
     </div>
-</div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</section>
 {% endblock body %}

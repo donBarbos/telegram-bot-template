@@ -3,23 +3,21 @@
 {% include "security/_messages.html" %}
 {% block body %}
 {{ super() }}
-<br><br><br><br><br>
-<section class="content">
+<br><br><br><br><br><br>
+<section class="content" style="height: 100vh; max-width: 800px; max-height: 800px">
     <div class="col-sm-8 col-sm-offset-2">
-        <div class="well">
-                <h1>Login</h1>
+        <div class="well" style="padding: 44px">
+            <h1 class="text-center">Login</h1>
             <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
                 {{ login_user_form.hidden_tag() }}
                 {{ render_field_with_errors(login_user_form.email) }}
                 {{ render_field_with_errors(login_user_form.password) }}
                 {{ render_checkbox_field(login_user_form.remember) }}
                 {{ render_field(login_user_form.next) }}
-                {{ render_field(login_user_form.submit, class="btn btn-primary") }}
+                {{ render_field(login_user_form.submit, class="btn btn-primary btn-block") }}
             </form>
-            <p>Not yet signed up? Please <a href="{{ url_for('security.register') }}">register for an account</a>.</p>
+            <p>Don't have an account? <a href="{{ url_for('security.register') }}">Create One</a></p>
         </div>
     </div>
 </section>
-<br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br>
 {% endblock body %}

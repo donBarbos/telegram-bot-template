@@ -684,48 +684,40 @@ current_user.is_authenticated %}
   <!-- /.row (main row) -->
 </section>
 <!-- /.content -->
-{% else %}
-
-<center>
-  <section class="content" style="color: white">
-    <div class="col-sm-12">
-      <h1>Telegram Bot Admin Panel</h1>
-      <p class="lead">Authentication</p>
-      <p>
-        This is an admin panel created for managing users, moderating and
-        viewing telegram bot analytics. <br />
-        If you have not yet changed the standard email/password for the first
-        <br />
-        superuser and/or this is your first authorization, you can log in under
-        it.
-      </p>
-      {% if not current_user.is_authenticated %}
-      <p>
-        You can register as a regular user, or log in as a superuser with the
-        following credentials: <br /><br />
-
-        email: <b>admin@example.com</b> <br />
-        password: <b>admin</b> <br />
-        <br />
-      </p>
-
-      <p>
-        <a class="btn btn-primary" href="{{ url_for('security.login') }}"
-          >Login</a
-        >
-        <a class="btn btn-default" href="{{ url_for('security.register') }}"
-          >Register</a
-        >
-      </p>
-      {% endif %}
+{% else %} {% if not current_user.is_authenticated %}
+<br /><br /><br /><br /><br /><br />
+<section
+  class="content d-flex align-items-center justify-content-center py-max"
+  style="height: 100vh; color: white"
+>
+  <div class="col-sm-12 text-center">
+    <h1>Telegram Bot Admin Panel</h1>
+    <p class="lead">Authentication</p>
+    <p>
+      This is an admin panel created for managing users, moderating and viewing
+      telegram bot analytics. <br />
+      If you have not yet changed the standard email/password for the first
       <br />
-      <p>
-        <a class="btn btn-primary" href="/"
-          ><i class="glyphicon glyphicon-chevron-left"></i> Back</a
-        >
-      </p>
-    </div>
-  </section>
-</center>
+      superuser and/or this is your first authorization, you can log in under
+      it.
+    </p>
+    <p>
+      You can register as a regular user, or log in as a superuser with the
+      following credentials: <br /><br />
 
-{% endif %} {% endblock body %}
+      email: <b>admin@example.com</b> <br />
+      password: <b>admin</b> <br />
+      <br />
+    </p>
+
+    <p>
+      <a class="btn btn-primary" href="{{ url_for('security.login') }}"
+        >Login</a
+      >
+      <a class="btn btn-default" href="{{ url_for('security.register') }}"
+        >Register</a
+      >
+    </p>
+  </div>
+</section>
+{% endif %} {% endif %} {% endblock body %}
