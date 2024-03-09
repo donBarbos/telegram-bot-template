@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 from typing import TYPE_CHECKING, Any
 
-from flask import Flask, abort, redirect, render_template, request, url_for
+from flask import Flask, abort, redirect, request, url_for
 from flask_admin import Admin, AdminIndexView, expose, helpers
 from flask_admin.consts import ICON_TYPE_FONT_AWESOME
 from flask_admin.contrib.sqla import ModelView
@@ -153,8 +153,8 @@ class CustomAdminIndexView(AdminIndexView):
 
 
 @app.route("/")
-def index() -> str:
-    return render_template("index.html")
+def index() -> Response:
+    return redirect(url_for("admin.index"))
 
 
 # Initializing the admin panel
