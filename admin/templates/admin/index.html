@@ -191,10 +191,9 @@ current_user.is_authenticated %}
 </section>
 <!-- /.content -->
 {% else %} {% if not current_user.is_authenticated %}
-<br /><br /><br /><br /><br /><br />
 <section
-  class="content d-flex align-items-center justify-content-center"
-  style="color: white"
+  class="content"
+  style="color: white; height: 100vh; display: flex; align-items: center"
 >
   <div class="col-sm-12 text-center">
     <h1>Telegram Bot Admin Panel</h1>
@@ -202,17 +201,12 @@ current_user.is_authenticated %}
     <p>
       This is an admin panel created for managing users, moderating and viewing
       telegram bot analytics. <br />
-      If you have not yet changed the standard email/password for the first
-      <br />
-      superuser and/or this is your first authorization, you can log in under
-      it.
     </p>
     <p>
-      You can register as a regular user, or log in as a superuser with the
-      following credentials: <br /><br />
+      Default email/password for first superuser:<br /><br />
 
-      email: <b>admin@example.com</b> <br />
-      password: <b>admin</b> <br />
+      email: <b>{{ default_email }}</b> <br />
+      password: <b>{{ default_password }}</b> <br />
       <br />
     </p>
 

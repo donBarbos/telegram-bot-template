@@ -7,7 +7,7 @@ load_dotenv()
 
 ADMIN_HOST: str = os.getenv("ADMIN_HOST") or "localhost"
 ADMIN_PORT: int = int(os.getenv("ADMIN_PORT") or 5000)
-DEFAULT_ADMIN_EMAIL: str = os.getenv("DEFAULT_ADMIN_EMAIL") or "admin@admin.com"
+DEFAULT_ADMIN_EMAIL: str = os.getenv("DEFAULT_ADMIN_EMAIL") or "admin@example.com"
 DEFAULT_ADMIN_PASSWORD: str = os.getenv("DEFAULT_ADMIN_PASSWORD") or "admin"
 
 DEBUG: bool = str(os.getenv("DEBUG")).lower() == "true"

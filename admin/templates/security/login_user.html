@@ -3,9 +3,8 @@
 {% include "security/_messages.html" %}
 {% block body %}
 {{ super() }}
-<br><br><br><br><br><br>
 <section class="content" style="max-width: 800px; max-height: 800px">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-8 col-sm-offset-2" style="margin-top: calc(100% / 6)">
         <div class="well" style="padding: 44px">
             <h1 class="text-center">Login</h1>
             <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">

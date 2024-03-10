@@ -139,6 +139,7 @@ class CustomAdminIndexView(AdminIndexView):
         order_count = get_orders_count()
         user_count = get_user_count()
         new_user_count = get_new_user_count(days_before)
+        new_user_count = get_new_user_count(days_before)
 
         return self.render(
             "admin/index.html",
@@ -146,6 +147,8 @@ class CustomAdminIndexView(AdminIndexView):
             user_count=user_count,
             new_user_count=new_user_count,
             period_start=period_start,
+            default_email=app.config.get("DEFAULT_ADMIN_EMAIL"),
+            default_password=app.config.get("DEFAULT_ADMIN_PASSWORD"),
         )
 
 

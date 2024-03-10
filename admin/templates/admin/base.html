@@ -51,6 +51,11 @@
   {% block head_tail %}
   {% endblock head_tail%}
 
+  <style>
+    body {
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini h-100">
 
@@ -62,7 +67,7 @@
     <header class="main-header">
       <!-- Logo -->
       {% block brand %}
-      <a href="{{ admin_view.admin.url }}" class="logo">
+      <a href="{{ admin_view.admin.url }}" class="logo" style="height: 53.45px">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>TG</b></span>
         <!-- logo for regular state and mobile devices -->
@@ -101,29 +106,14 @@
     <aside class="main-sidebar">
       <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-          <div class="pull-left image">
-            <i class="fa fa-user-circle" style="color: white; font-size: 2.5em;"></i>
-          </div>
-          <div class="pull-left info">
-            <p>
-             {% if current_user.first_name -%}
-             {{ current_user.first_name }}
-             {% else -%}
-             {{ current_user.email }}
-             {%- endif %}
-           </p>
-         </div>
-       </div>
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        <li class="header">MAIN NAVIGATION</li>
-        {% block main_menu %}
-        {{ layout.menu() }}
-        {% endblock %}
-      </ul>
-    </section>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+          <li class="header">MAIN NAVIGATION</li>
+          {% block main_menu %}
+          {{ layout.menu() }}
+          {% endblock %}
+        </ul>
+      </section>
     <!-- /.sidebar -->
   </aside>
 
