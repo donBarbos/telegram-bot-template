@@ -10,34 +10,33 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Flask-Admin dashboard login template">
-  <meta name="author" content="Jonathan Ars">
+  <meta name="author" content="donBarbos">
   {% endblock head_meta %}
 
   {% block head_css %}
   <!-- Bootstrap 3.3.6 -->
-  <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet"></link>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link href="{{url_for('static',filename='css/AdminLTE.min.css')}}" rel="stylesheet"></link>
+  <link href="https://cdn.jsdelivr.net/npm/admin-lte@2.3.8/dist/css/AdminLTE.min.css" rel="stylesheet">
   <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
-  <link href="{{url_for('static',filename='css/skins/_all-skins.min.css')}}" rel="stylesheet"></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.0/css/skins/skin-blue.min.css" integrity="sha512-BkEsw04QmNkr3KQWCcQZX/HMoxo+opbv6ZRudUeh+/DmNoHonbPgDbC10jJyZF5ziwaMre3V23t5aiDN/VtUuQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- iCheck -->
-  <link href="{{url_for('static',filename='plugins/iCheck/flat/blue.css')}}" rel="stylesheet"></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.3/skins/line/blue.min.css" integrity="sha512-8LZI/lrjqgSZthdWQpVeePVUkMaRifkeQHGymi9CMNjP9+Tcf/7fIKxOQmruJOqAsEHpzu3qRW9i/cs6CKrQcA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Morris chart -->
-  <link href="{{url_for('static',filename='plugins/morris/morris.css')}}" rel="stylesheet"></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.css" integrity="sha512-fjy4e481VEA/OTVR4+WHMlZ4wcX/+ohNWKpVfb7q+YNnOCS++4ZDn3Vi6EaA2HJ89VXARJt7VvuAKaQ/gs1CbQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- jvectormap -->
-  <link href="{{url_for('static',filename='plugins/jvectormap/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet"></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jvectormap/1.2.2/jquery-jvectormap.min.css" integrity="sha512-aezjkrRoy3ZR4p7unUG5DU/Hy2EHDQGNpXx58R0SkcpoEnLdQgAVyK1eN5Db8qDEsGqwz3zt6aqQjgo1KX2Uyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Date Picker -->
-  <link href="{{url_for('static',filename='plugins/datepicker/datepicker3.css')}}" rel="stylesheet"></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" integrity="sha512-8vdZWz6gSr6gJeFbG0xA0bKmX+wpNe4Y/IY42RMdNe9VspA/v5HzBkqjHDOLJ4WCX8CVSyXvHr0+wc1dEluKhQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Daterange picker -->
-  <link href="{{url_for('static',filename='plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet"></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.19/daterangepicker.min.css" integrity="sha512-7mJKlXWP4Z8eLwYwVeBxxbCR8IDVMAK7ph5V5CpT3YKwCWW0WcVGkoTkeFurwkFjW0SKO/H4uIlLw9XsgwIXTQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- bootstrap wysihtml5 - text editor -->
-  <link href="{{url_for('static',filename='plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet"></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-wysiwyg/0.3.3/bootstrap3-wysihtml5.min.css" integrity="sha512-Bhi4560umtRBUEJCTIJoNDS6ssVIls7oiYyT3PbhxZV+9uBbLVO/mWo56hrBNNbIfMXKvtIPJi/Jg+vpBpA7sg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Flask-admin admin styles -->
-  <link href="{{ admin_static.url(filename='admin/css/bootstrap3/admin.css', v='1.1.1') }}" rel="stylesheet">
   {% if admin_view.extra_css %}
   {% for css_url in admin_view.extra_css %}
   <link href="{{ css_url }}" rel="stylesheet">
@@ -53,12 +52,12 @@
   {% endblock head_tail%}
 
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini h-100">
 
   {% block page_body %}
 
   <!-- TOP NAVBAR -->
-  <div class="wrapper">
+  <div class="wrapper" style="min-height:100vh;">
     {% if current_user.is_authenticated %}
     <header class="main-header">
       <!-- Logo -->
@@ -81,9 +80,6 @@
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
             <!-- Control Sidebar Toggle Button -->
-            <li>
-              <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-            </li>
             <li>
               {% block access_control %}
               {% endblock %}
@@ -118,20 +114,8 @@
              {{ current_user.email }}
              {%- endif %}
            </p>
-           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
          </div>
        </div>
-       <!-- search form -->
-       <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-            </button>
-          </span>
-        </div>
-      </form>
-      <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
@@ -161,68 +145,6 @@
 
     {% if current_user.is_authenticated %}
   </div>
-  <!-- / Content Wrapper. color white -->
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-cog"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Allow mail redirect
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Other sets of options are available
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Expose author name in posts
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Allow the user to show his name in blog posts
-            </p>
-          </div>
-
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
 
   <footer class="main-footer">
     <strong>Copyright &copy; 2023 <a href="https://github.com/donBarbos">donBarbos</a>.</strong> All rights reserved.
@@ -236,7 +158,7 @@
 
 {% block tail_js %}
 <!-- jQuery 2.2.3 -->
-<script src="{{url_for('static',filename='plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha512-SFaNb3xC08k/Wf6CRM1J+O/vv4YWyrPBSdy0o+1nqKzf+uLrIBnaeo8aYoAAOd31nMNHwX8zwVwTMbbCJjA8Kg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -244,8 +166,8 @@
   $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.6 -->
-<script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
-<script src="{{ admin_static.url(filename='vendor/select2/select2.min.js', v='3.5.2') }}" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js" integrity="sha512-bj8HE1pKwchoYNizhD57Vl6B9ExS25Hw21WxoQEzGapNNjLZ0+kgRMEn9KSCD+igbE9+/dJO7x6ZhLrdaQ5P3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 {% if admin_view.extra_js %}
 {% for js_url in admin_view.extra_js %}
@@ -255,29 +177,27 @@
 
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="{{url_for('static',filename='plugins/morris/morris.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js" integrity="sha512-9FtP5DAAufVz3oNWHfXGNYv5VP8Rzkq+uVK8TDWtDK8i7rqifXbecSFHPU5Xl0NqwTwSBO1tBh3GKeAXiAVNpg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- Sparkline -->
-<script src="{{url_for('static',filename='plugins/sparkline/jquery.sparkline.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js" integrity="sha512-3PRVLmoBYuBDbCEojg5qdmd9UhkPiyoczSFYjnLhFb2KAFsWWEMlAPt0olX1Nv7zGhDfhGEVkXsu51a55nlYmw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- jvectormap -->
 <script src="{{url_for('static',filename='plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
 <script src="{{url_for('static',filename='plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
 <!-- jQuery Knob Chart -->
-<script src="{{url_for('static',filename='plugins/knob/jquery.knob.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.11/jquery.knob.min.js" integrity="sha512-NhRZzPdzMOMf005Xmd4JonwPftz4Pe99mRVcFeRDcdCtfjv46zPIi/7ZKScbpHD/V0HB1Eb+ZWigMqw94VUVaw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- daterangepicker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="{{url_for('static',filename='plugins/daterangepicker/daterangepicker.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.19/daterangepicker.min.js" integrity="sha512-GkQtOaR7sIMWGaYd5snXXfP8/q6dgJPiFTUVSBHEX2NnptoREEnBKT9vL/b8QeCZLazvFaCEE142nb3t3OQwcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- datepicker -->
-<script src="{{url_for('static',filename='plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js" integrity="sha512-ygaYzcKBzf1YptDaS/7b9P2pY2LW0YCXp22l+IZYHwOjB2opJDrniEMarJ1HsckAdKirYqE9JMpKfSm6NHUcdg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- Bootstrap WYSIHTML5 -->
-<script src="{{url_for('static',filename='plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
-<!-- Slimscroll -->
-<script src="{{url_for('static',filename='plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-wysiwyg/0.3.3/bootstrap3-wysihtml5.all.min.js" integrity="sha512-ng0ComxRUMJeeN1JS62sxZ+eSjoavxBVv3l7SG4W/gBVbQj+AfmVRdkFT4BNNlxdDCISRrDBkNDxC7omF0MBLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- slimScroll -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js" integrity="sha512-cJMgI2OtiquRH4L9u+WQW+mz828vmdp9ljOcm/vKTQ7+ydQUktrPVewlykMgozPP+NUBbHdeifE6iJ6UVjNw5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- FastClick -->
-<script src="{{url_for('static',filename='plugins/fastclick/fastclick.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js" integrity="sha512-qH+R6YL4/40iiIrnN5aNZ1sEeEalNAdnzP9jfsxFPBdIslTkwUddkSazjVWhJ3f/3Y26QF6aql0xeneuVw0h/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- AdminLTE App -->
-<script src="{{url_for('static',filename='js/app.min.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{url_for('static',filename='js/demo.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@2.3.8/dist/js/app.min.js"></script>
 {% if admin_view.name=="Home" %}
   <script src="{{url_for('static',filename='js/pages/dashboard.js')}}"></script>
 {% endif %}
