@@ -19,8 +19,8 @@
 {% macro render_checkbox_field(field) -%}
 <div class="form-group">
     <div class="checkbox">
-        <label>
-            {{ field(type='checkbox', **kwargs) }} {{ field.label }}
+        <label style="padding-left: 0px">
+            {{ field(type='checkbox', style='margin-left: 0px;', **kwargs) }} {{ field.label }}
         </label>
     </div>
 </div>
