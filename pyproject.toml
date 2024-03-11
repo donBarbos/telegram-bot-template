@@ -17,7 +17,7 @@ pydantic-settings = "^2.0.3"
 [tool.poetry.group.bot.dependencies]
 aiogram = "^3.3.0"
 asyncpg = "^0.29.0"
-redis = "^5.0.1"
+redis = "^5.0.3"
 loguru = "^0.7.2"
 sentry-sdk = {extras = ["loguru"], version = "^1.41.0"}
 aiohttp = {extras = ["speedups"], version = "^3.9.3"}
