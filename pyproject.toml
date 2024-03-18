@@ -40,7 +40,7 @@ psycopg2-binary = "^2.9.9"
 tablib = {extras = ["xlsx"], version = "^3.5.0"}
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.3.2"
+ruff = "^0.3.3"
 mypy = "^1.7.1"
 pre-commit = "^3.6.0"
 
