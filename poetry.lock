@@ -2090,22 +2090,21 @@ sqlcipher = ["sqlcipher3_binary"]
 
 [[package]]
 name = "tablib"
-version = "3.5.0"
+version = "3.6.0"
 description = "Format agnostic tabular data library (XLS, JSON, YAML, CSV, etc.)"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "tablib-3.5.0-py3-none-any.whl", hash = "sha256:9821caa9eca6062ff7299fa645e737aecff982e6b2b42046928a6413c8dabfd9"},
-    {file = "tablib-3.5.0.tar.gz", hash = "sha256:f6661dfc45e1d4f51fa8a6239f9c8349380859a5bfaa73280645f046d6c96e33"},
+    {file = "tablib-3.6.0-py3-none-any.whl", hash = "sha256:c403ed093d438b6162236efb106463d76c37a66283565b8c5c4631010c7e8b6d"},
+    {file = "tablib-3.6.0.tar.gz", hash = "sha256:414cb1922ae14af267ddd93163687dac6db74220360c5e0bd91f9a4479a9a649"},
 ]
 
 [package.dependencies]
 openpyxl = {version = ">=2.6.0", optional = true, markers = "extra == \"xlsx\""}
 
 [package.extras]
-all = ["markuppy", "odfpy", "openpyxl (>=2.6.0)", "pandas", "pyyaml", "tabulate", "xlrd", "xlwt"]
+all = ["odfpy", "openpyxl (>=2.6.0)", "pandas", "pyyaml", "tabulate", "xlrd", "xlwt"]
 cli = ["tabulate"]
-html = ["markuppy"]
 ods = ["odfpy"]
 pandas = ["pandas"]
 xls = ["xlrd", "xlwt"]
@@ -2369,4 +2368,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "f462b9fa384d10c5c2b263d91f07b4b3d578307479e0cadbd759c513f6d5c37e"
+content-hash = "83191628fad2f001c4e4e4911f3fc1001d0aeabb782f0474f06f705e3b4aa0e8"
