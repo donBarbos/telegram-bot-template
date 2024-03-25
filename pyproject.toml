@@ -10,7 +10,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-sqlalchemy = "^2.0.28"
+sqlalchemy = "^2.0.29"
 pydantic = "^2.3.0"
 pydantic-settings = "^2.0.3"
 
