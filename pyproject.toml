@@ -24,7 +24,7 @@ aiohttp = {extras = ["speedups"], version = "^3.9.4"}
 uvloop = "^0.19.0"
 babel = "^2.13.1"
 cachetools = "^5.3.2"
-orjson = "^3.10.0"
+orjson = "^3.10.1"
 alembic = "^1.13.1"
 prometheus-client = "^0.20.0"
 
