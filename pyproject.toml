@@ -22,7 +22,7 @@ loguru = "^0.7.2"
 sentry-sdk = {extras = ["loguru"], version = "^2.0.1"}
 aiohttp = {extras = ["speedups"], version = "^3.9.5"}
 uvloop = "^0.19.0"
-babel = "^2.13.1"
+babel = "^2.15.0"
 cachetools = "^5.3.2"
 orjson = "^3.10.3"
 alembic = "^1.13.1"
