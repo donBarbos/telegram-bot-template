@@ -3,13 +3,13 @@ from __future__ import annotations
 
 from sqlalchemy.orm import Mapped, mapped_column
 
-from bot.database.models.base import Base, created_at, int_pk
+from bot.database.models.base import Base, big_int_pk, created_at
 
 
 class UserModel(Base):
     __tablename__ = "users"
 
-    id: Mapped[int_pk]
+    id: Mapped[big_int_pk]
     first_name: Mapped[str]
     last_name: Mapped[str | None]
     username: Mapped[str | None]
