@@ -48,16 +48,16 @@ pre-commit = "^3.7.0"
 fix = true
 unsafe-fixes = true
 line-length = 120
-select = ["ALL"]
-ignore = ["D", "ANN101", "ANN102", "ANN401", "TD003", "FIX002", "COM812", "ISC001", "FBT001", "FBT002", "RUF", "ERA", "ARG005"]
+lint.select = ["ALL"]
+lint.ignore = ["D", "ANN101", "ANN102", "ANN401", "TD003", "FIX002", "COM812", "ISC001", "FBT001", "FBT002", "RUF", "ERA", "ARG005"]
 cache-dir = "/tmp/ruff-cache/"
 extend-exclude = ["logs", "configs", "migrations"]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 no-lines-before = ["future", "standard-library"]
 known-local-folder = ["bot", "admin"]
 
-[tool.ruff.extend-per-file-ignores]
+[tool.ruff.lint.extend-per-file-ignores]
 "tests/*.py" = ["ANN401", "S101", "S311"]
 
 [tool.mypy]

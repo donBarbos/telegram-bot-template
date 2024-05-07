@@ -12,6 +12,7 @@ pybabel compile -d bot/locales -D messages --statistics
 pybabel update -i bot/locales/messages.pot -d bot/locales -D messages
 
 """
+
 from __future__ import annotations
 from typing import TYPE_CHECKING, Any
 
