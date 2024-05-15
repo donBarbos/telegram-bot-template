@@ -18,7 +18,7 @@ DEFAULT_TTL = 10
 def build_key(*args: tuple[str, Any], **kwargs: dict[str, Any]) -> str:
     """Build a string key based on provided arguments and keyword arguments."""
     args_str = ":".join(map(str, args))
-    kwargs_str = ":".join(f"{key}={value}" for key, value in kwargs.items())
+    kwargs_str = ":".join(f"{key}={value}" for key, value in sorted(kwargs.items()))
     return f"{args_str}:{kwargs_str}"
 
 
