@@ -18,6 +18,7 @@ from typing import TYPE_CHECKING, Any
 
 from aiogram.utils.i18n.middleware import I18nMiddleware
 
+from bot.core.config import DEFAULT_LOCALE
 from bot.services.users import get_language_code
 
 if TYPE_CHECKING:
@@ -26,7 +27,7 @@ if TYPE_CHECKING:
 
 
 class ACLMiddleware(I18nMiddleware):
-    DEFAULT_LANGUAGE_CODE = "en"
+    DEFAULT_LANGUAGE_CODE = DEFAULT_LOCALE
 
     async def get_locale(self, event: Message | CallbackQuery | InlineQuery, data: dict[str, Any]) -> str:
         session: AsyncSession = data["session"]
