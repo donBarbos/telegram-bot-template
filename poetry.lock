@@ -27,13 +27,13 @@ files = [
 
 [[package]]
 name = "aiogram"
-version = "3.6.0"
+version = "3.7.0"
 description = "Modern and fully asynchronous framework for Telegram Bot API"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "aiogram-3.6.0-py3-none-any.whl", hash = "sha256:f04cc42151f8198cdff038af2f62e9a481ce136c37e0cf9e3f2fe5a7e80bc4bb"},
-    {file = "aiogram-3.6.0.tar.gz", hash = "sha256:66bfbdbef2ad5f4bd1a695aee84bbc3146ef7c1cc72d1bdacd3d5f8334d5934f"},
+    {file = "aiogram-3.7.0-py3-none-any.whl", hash = "sha256:3b5dca84e73403e89c15ef2ecaedf2c16c53eaf97068eb74fcfd4effc1ade593"},
+    {file = "aiogram-3.7.0.tar.gz", hash = "sha256:beadfc9f3ea4b65c04b58b278fab66fb08424142d56eeff3a3b6f19ff6a69038"},
 ]
 
 [package.dependencies]
@@ -46,10 +46,11 @@ typing-extensions = ">=4.7.0,<=5.0"
 
 [package.extras]
 cli = ["aiogram-cli (>=1.0.3,<1.1.0)"]
-dev = ["black (>=23.10.0,<23.11.0)", "isort (>=5.12.0,<5.13.0)", "mypy (>=1.6.1,<1.7.0)", "packaging (>=23.1,<24.0)", "pre-commit (>=3.5.0,<3.6.0)", "ruff (>=0.1.1,<0.2.0)", "toml (>=0.10.2,<0.11.0)"]
+dev = ["black (>=23.10.0,<23.11.0)", "isort (>=5.12.0,<5.13.0)", "motor-types (>=1.0.0b4,<1.1.0)", "mypy (>=1.6.1,<1.7.0)", "packaging (>=23.1,<24.0)", "pre-commit (>=3.5.0,<3.6.0)", "ruff (>=0.1.1,<0.2.0)", "toml (>=0.10.2,<0.11.0)"]
 docs = ["furo (>=2023.9.10,<2023.10.0)", "markdown-include (>=0.8.1,<0.9.0)", "pygments (>=2.16.1,<2.17.0)", "pymdown-extensions (>=10.3,<11.0)", "sphinx (>=7.2.6,<7.3.0)", "sphinx-autobuild (>=2021.3.14,<2021.4.0)", "sphinx-copybutton (>=0.5.2,<0.6.0)", "sphinx-intl (>=2.1.0,<2.2.0)", "sphinx-substitution-extensions (>=2022.2.16,<2022.3.0)", "sphinxcontrib-towncrier (>=0.3.2a0,<0.4.0)", "towncrier (>=23.6.0,<23.7.0)"]
 fast = ["aiodns (>=3.0.0)", "uvloop (>=0.17.0)"]
 i18n = ["babel (>=2.13.0,<2.14.0)"]
+mongo = ["motor (>=3.3.2,<3.4.0)"]
 proxy = ["aiohttp-socks (>=0.8.3,<0.9.0)"]
 redis = ["redis[hiredis] (>=5.0.1,<5.1.0)"]
 test = ["aresponses (>=2.1.6,<2.2.0)", "pycryptodomex (>=3.19.0,<3.20.0)", "pytest (>=7.4.2,<7.5.0)", "pytest-aiohttp (>=1.0.5,<1.1.0)", "pytest-asyncio (>=0.21.1,<0.22.0)", "pytest-cov (>=4.1.0,<4.2.0)", "pytest-html (>=4.0.2,<4.1.0)", "pytest-lazy-fixture (>=0.6.3,<0.7.0)", "pytest-mock (>=3.12.0,<3.13.0)", "pytest-mypy (>=0.10.3,<0.11.0)", "pytz (>=2023.3,<2024.0)"]
@@ -2342,4 +2343,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "d10e9381b48b32dbba2410414f62ac65d751364aae5da46a38b7f0a7e4314bd9"
+content-hash = "833057b04f4b1156f4af79c3c21c3e84b8c3886079725727f861c0e2dd2c46b0"
