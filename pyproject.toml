@@ -12,7 +12,7 @@ readme = "README.md"
 python = "^3.10"
 sqlalchemy = "^2.0.30"
 pydantic = "^2.7.3"
-pydantic-settings = "^2.3.1"
+pydantic-settings = "^2.3.2"
 
 [tool.poetry.group.bot.dependencies]
 aiogram = "^3.7.0"
