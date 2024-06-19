@@ -15,7 +15,7 @@ pydantic = "^2.7.4"
 pydantic-settings = "^2.3.3"
 
 [tool.poetry.group.bot.dependencies]
-aiogram = "^3.7.0"
+aiogram = "^3.8.0"
 asyncpg = "^0.29.0"
 redis = "^5.0.6"
 loguru = "^0.7.2"
