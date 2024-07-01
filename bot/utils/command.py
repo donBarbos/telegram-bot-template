@@ -22,4 +22,4 @@ def find_command_argument(message: str | None) -> str | None:
     if not is_command(message):
         return None
 
-    return message.split()[1] if " " in message else None
+    return str(message).split()[1] if " " in str(message) else None
