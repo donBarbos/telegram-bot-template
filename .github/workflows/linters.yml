@@ -27,11 +27,11 @@ jobs:
           python -m pip install poetry
           poetry install
 
-      - name: Lint with ruff
-        run: poetry run ruff .
+      - name: Check using Ruff
+        run: poetry run ruff check .
 
-      - name: Format with ruff
-        run: poetry run ruff format .
+      - name: Check using Ruff formatter
+        run: poetry run ruff format --check .
 
 #      - name: Type Hints check
 #        run: poetry run mypy .
