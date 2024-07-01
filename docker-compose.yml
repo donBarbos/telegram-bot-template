@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    image: bot:latest
     container_name: bot
     restart: always
     env_file:
@@ -15,9 +16,6 @@ services:
     depends_on:
       - pgbouncer
       - redis
-    volumes:
-      - ./bot:/usr/src/app/bot
-      - ./migrations:/usr/src/app/migrations
 
   admin:
     build:
@@ -90,6 +88,20 @@ services:
     #command:
     #  - 'redis-server'
     #  - '--requirepass myStrongPassword'
+
+  migrator:
+    image: bot:latest
+    container_name: migrator
+    restart: "on-failure"
+    command: alembic upgrade head
+    env_file:
+      - .env
+    networks:
+      - app
+    depends_on:
+      - bot
+    volumes:
+      - ./migrations:/usr/src/app/migrations
 
   # MONITORING
   node-exporter:

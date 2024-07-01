@@ -40,12 +40,6 @@
     docker compose up -d --build
     ```
 
--   make migrations
-
-    ```bash
-    docker compose exec bot alembic upgrade head
-    ```
-
 ### 💻 Running on Local Machine
 
 -   install dependencies using [Poetry](https://python-poetry.org "python package manager")
