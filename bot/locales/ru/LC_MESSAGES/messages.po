@@ -26,7 +26,7 @@ msgstr "кол-во пользователей: <b>{count}</b>"
 
 #: bot/handlers/info.py:11
 msgid "about"
-msgstr "ℹ️ <b>[About]</b>\\"
+msgstr "ℹ️ <b>About</b>"
 
 #: bot/handlers/menu.py:13 bot/handlers/start.py:16
 msgid "title main keyboard"
