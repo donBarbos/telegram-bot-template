@@ -11,7 +11,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 sqlalchemy = "^2.0.31"
-pydantic = "^2.7.4"
+pydantic = "^2.8.2"
 pydantic-settings = "^2.3.4"
 
 [tool.poetry.group.bot.dependencies]
