@@ -84,10 +84,7 @@ services:
       - app
     volumes:
       - redis-data:/bitnami/redis/data
-    #command: /bin/sh -c "redis-server --requirepass $${REDIS_PASS:?REDIS_PASS variable is not set}"
-    #command:
-    #  - 'redis-server'
-    #  - '--requirepass myStrongPassword'
+    command: /bin/sh -c 'if [ -n "$REDIS_PASS" ]; then redis-server --requirepass "$REDIS_PASS"; else redis-server; fi'
 
   migrator:
     image: bot:latest
