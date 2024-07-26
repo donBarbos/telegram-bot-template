@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    image: bot:latest
     container_name: bot
     restart: always
     env_file:
@@ -15,9 +16,6 @@ services:
     depends_on:
       - pgbouncer
       - redis
-    volumes:
-      - ./bot:/usr/src/app/bot
-      - ./migrations:/usr/src/app/migrations
 
   admin:
     build:
@@ -86,10 +84,21 @@ services:
       - app
     volumes:
       - redis-data:/bitnami/redis/data
-    #command: /bin/sh -c "redis-server --requirepass $${REDIS_PASS:?REDIS_PASS variable is not set}"
-    #command:
-    #  - 'redis-server'
-    #  - '--requirepass myStrongPassword'
+    command: /bin/sh -c 'if [ -n "$REDIS_PASS" ]; then redis-server --requirepass "$REDIS_PASS"; else redis-server; fi'
+
+  migrator:
+    image: bot:latest
+    container_name: migrator
+    restart: "on-failure"
+    command: alembic upgrade head
+    env_file:
+      - .env
+    networks:
+      - app
+    depends_on:
+      - bot
+    volumes:
+      - ./migrations:/usr/src/app/migrations
 
   # MONITORING
   node-exporter:

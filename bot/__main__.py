@@ -14,10 +14,6 @@ from bot.keyboards.default_commands import remove_default_commands, set_default_
 from bot.middlewares import register_middlewares
 from bot.middlewares.prometheus import prometheus_middleware_factory
 
-if settings.USE_WEBHOOK:
-    from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
-    from aiohttp import web
-
 
 async def on_startup() -> None:
     logger.info("bot starting...")
@@ -66,6 +62,9 @@ async def on_shutdown() -> None:
 
 
 async def setup_webhook() -> None:
+    from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
+    from aiohttp.web import AppRunner, TCPSite
+
     await bot.set_webhook(
         settings.webhook_url,
         allowed_updates=dp.resolve_used_update_types(),
@@ -80,9 +79,9 @@ async def setup_webhook() -> None:
     webhook_requests_handler.register(app, path=settings.WEBHOOK_PATH)
     setup_application(app, dp, bot=bot)
 
-    runner = web.AppRunner(app)
+    runner = AppRunner(app)
     await runner.setup()
-    site = web.TCPSite(runner, host=settings.WEBHOOK_HOST, port=settings.WEBHOOK_PORT)
+    site = TCPSite(runner, host=settings.WEBHOOK_HOST, port=settings.WEBHOOK_PORT)
     await site.start()
 
     await asyncio.Event().wait()

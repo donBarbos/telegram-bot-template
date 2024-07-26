@@ -22,17 +22,17 @@ from bot.core.config import DEFAULT_LOCALE
 from bot.services.users import get_language_code
 
 if TYPE_CHECKING:
-    from aiogram.types import CallbackQuery, InlineQuery, Message
+    from aiogram.types import TelegramObject
     from sqlalchemy.ext.asyncio import AsyncSession
 
 
 class ACLMiddleware(I18nMiddleware):
     DEFAULT_LANGUAGE_CODE = DEFAULT_LOCALE
 
-    async def get_locale(self, event: Message | CallbackQuery | InlineQuery, data: dict[str, Any]) -> str:
+    async def get_locale(self, event: TelegramObject, data: dict[str, Any]) -> str:
         session: AsyncSession = data["session"]
 
-        if not event.from_user:
+        if not getattr(event, "from_user", None):
             return self.DEFAULT_LANGUAGE_CODE
 
         user_id = event.from_user.id

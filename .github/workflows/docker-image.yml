@@ -13,4 +13,6 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: |
+        docker build . --file Dockerfile --tag image-bot:$(date +%s)
+        docker build . --file admin/Dockerfile --tag image-admin:$(date +%s)

@@ -68,7 +68,7 @@ class BaseEvent(BaseModel):
     plan: Plan | None = None
 
     def to_dict(self) -> dict[str, Any]:
-        return {key: value for key, value in self.dict(exclude_none=True).items() if value}
+        return {key: value for key, value in self.model_dump(exclude_none=True).items() if value}
 
 
 class AbstractAnalyticsLogger(ABC):
