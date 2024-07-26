@@ -38,4 +38,7 @@ class ACLMiddleware(I18nMiddleware):
         user_id = event.from_user.id
         language_code: str | None = await get_language_code(session=session, user_id=user_id)
 
+        if language_code == "":
+            language_code = event.from_user.language_code
+
         return language_code or self.DEFAULT_LANGUAGE_CODE
