@@ -27,18 +27,18 @@ files = [
 
 [[package]]
 name = "aiogram"
-version = "3.10.0"
+version = "3.11.0"
 description = "Modern and fully asynchronous framework for Telegram Bot API"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "aiogram-3.10.0-py3-none-any.whl", hash = "sha256:dc43bfbe68c736cca48d91ffbc55a397df24b56c332206af850965619689beca"},
-    {file = "aiogram-3.10.0.tar.gz", hash = "sha256:f500d4b309e3cc08a87ae5a053b229199034f382925de00aa2ed005d5e25d575"},
+    {file = "aiogram-3.11.0-py3-none-any.whl", hash = "sha256:b8076c14d5aed03db47fd14595e24ee19cb481b77105d7962c75cd64e6bbca4f"},
+    {file = "aiogram-3.11.0.tar.gz", hash = "sha256:eb033f425c792bdf1000d3ee2ef05c70731b8264f98885ce79d2cd2d7a92e80f"},
 ]
 
 [package.dependencies]
 aiofiles = ">=23.2.1,<23.3.0"
-aiohttp = ">=3.9.0,<3.10.0"
+aiohttp = ">=3.9.0,<3.11"
 certifi = ">=2023.7.22"
 magic-filter = ">=1.0.12,<1.1"
 pydantic = ">=2.4.1,<2.9"
@@ -46,7 +46,7 @@ typing-extensions = ">=4.7.0,<=5.0"
 
 [package.extras]
 cli = ["aiogram-cli (>=1.0.3,<1.1.0)"]
-dev = ["black (>=24.4.2,<24.5.0)", "isort (>=5.13.2,<5.14.0)", "motor-types (>=1.0.0b4,<1.1.0)", "mypy (>=1.10.0,<1.11.0)", "packaging (>=24.1,<25.0)", "pre-commit (>=3.5,<4.0)", "ruff (>=0.4.9,<0.5.0)", "toml (>=0.10.2,<0.11.0)"]
+dev = ["black (>=24.4.2,<24.5.0)", "isort (>=5.13.2,<5.14.0)", "motor-types (>=1.0.0b4,<1.1.0)", "mypy (>=1.10.0,<1.11.0)", "packaging (>=24.1,<25.0)", "pre-commit (>=3.5,<4.0)", "ruff (>=0.5.1,<0.6.0)", "toml (>=0.10.2,<0.11.0)"]
 docs = ["furo (>=2023.9.10,<2023.10.0)", "markdown-include (>=0.8.1,<0.9.0)", "pygments (>=2.16.1,<2.17.0)", "pymdown-extensions (>=10.3,<11.0)", "sphinx (>=7.2.6,<7.3.0)", "sphinx-autobuild (>=2021.3.14,<2021.4.0)", "sphinx-copybutton (>=0.5.2,<0.6.0)", "sphinx-intl (>=2.1.0,<2.2.0)", "sphinx-substitution-extensions (>=2022.2.16,<2022.3.0)", "sphinxcontrib-towncrier (>=0.3.2a0,<0.4.0)", "towncrier (>=23.6.0,<23.7.0)"]
 fast = ["aiodns (>=3.0.0)", "uvloop (>=0.17.0)"]
 i18n = ["babel (>=2.13.0,<2.14.0)"]
@@ -2368,4 +2368,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "3cae0c4e74ed0b057a7cdb6774d34f990abbd87a4a42e0a1dda51b8719b01e71"
+content-hash = "16fc997706214c8c9251a3b0ff9e355837e03e230acd23fa8a3bea9435c99619"
