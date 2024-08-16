@@ -27,13 +27,13 @@ files = [
 
 [[package]]
 name = "aiogram"
-version = "3.11.0"
+version = "3.12.0"
 description = "Modern and fully asynchronous framework for Telegram Bot API"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "aiogram-3.11.0-py3-none-any.whl", hash = "sha256:b8076c14d5aed03db47fd14595e24ee19cb481b77105d7962c75cd64e6bbca4f"},
-    {file = "aiogram-3.11.0.tar.gz", hash = "sha256:eb033f425c792bdf1000d3ee2ef05c70731b8264f98885ce79d2cd2d7a92e80f"},
+    {file = "aiogram-3.12.0-py3-none-any.whl", hash = "sha256:4b9969d6751b810748835d341aafc0b44fe4675d741bff1b07c24daa47edf79f"},
+    {file = "aiogram-3.12.0.tar.gz", hash = "sha256:582a5cf058fccc470ed08c9aa36fdef5b708d01965e51963c3969596c1d2ac19"},
 ]
 
 [package.dependencies]
@@ -47,7 +47,7 @@ typing-extensions = ">=4.7.0,<=5.0"
 [package.extras]
 cli = ["aiogram-cli (>=1.0.3,<1.1.0)"]
 dev = ["black (>=24.4.2,<24.5.0)", "isort (>=5.13.2,<5.14.0)", "motor-types (>=1.0.0b4,<1.1.0)", "mypy (>=1.10.0,<1.11.0)", "packaging (>=24.1,<25.0)", "pre-commit (>=3.5,<4.0)", "ruff (>=0.5.1,<0.6.0)", "toml (>=0.10.2,<0.11.0)"]
-docs = ["furo (>=2023.9.10,<2023.10.0)", "markdown-include (>=0.8.1,<0.9.0)", "pygments (>=2.16.1,<2.17.0)", "pymdown-extensions (>=10.3,<11.0)", "sphinx (>=7.2.6,<7.3.0)", "sphinx-autobuild (>=2021.3.14,<2021.4.0)", "sphinx-copybutton (>=0.5.2,<0.6.0)", "sphinx-intl (>=2.1.0,<2.2.0)", "sphinx-substitution-extensions (>=2022.2.16,<2022.3.0)", "sphinxcontrib-towncrier (>=0.3.2a0,<0.4.0)", "towncrier (>=23.6.0,<23.7.0)"]
+docs = ["furo (>=2023.9.10,<2023.10.0)", "markdown-include (>=0.8.1,<0.9.0)", "pygments (>=2.16.1,<2.17.0)", "pymdown-extensions (>=10.3,<11.0)", "sphinx (>=7.2.6,<7.3.0)", "sphinx-autobuild (>=2021.3.14,<2021.4.0)", "sphinx-copybutton (>=0.5.2,<0.6.0)", "sphinx-intl (>=2.1.0,<2.2.0)", "sphinx-substitution-extensions (>=2022.2.16,<2022.3.0)", "sphinxcontrib-towncrier (>=0.4.0a0,<0.5.0)", "towncrier (>=24.7.1,<24.8.0)"]
 fast = ["aiodns (>=3.0.0)", "uvloop (>=0.17.0)"]
 i18n = ["babel (>=2.13.0,<2.14.0)"]
 mongo = ["motor (>=3.3.2,<3.4.0)"]
@@ -2381,4 +2381,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "458968282c3a98ed6fdee619ab838e3a6ef538108e9a9c3a1df37b674d46605a"
+content-hash = "5c0a4024f4c7c54ca89e21df1f49dfbd05f3a8ce640730f17205df66d9a261e6"
