@@ -23,7 +23,7 @@ sentry-sdk = {extras = ["loguru"], version = "^2.13.0"}
 aiohttp = {extras = ["speedups"], version = "^3.10.3"}
 uvloop = "^0.20.0"
 babel = "^2.16.0"
-cachetools = "^5.4.0"
+cachetools = "^5.5.0"
 orjson = "^3.10.7"
 alembic = "^1.13.2"
 prometheus-client = "^0.20.0"
