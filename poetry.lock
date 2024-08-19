@@ -466,13 +466,13 @@ files = [
 
 [[package]]
 name = "cachetools"
-version = "5.4.0"
+version = "5.5.0"
 description = "Extensible memoizing collections and decorators"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "cachetools-5.4.0-py3-none-any.whl", hash = "sha256:3ae3b49a3d5e28a77a0be2b37dbcb89005058959cb2323858c2657c4a8cab474"},
-    {file = "cachetools-5.4.0.tar.gz", hash = "sha256:b8adc2e7c07f105ced7bc56dbb6dfbe7c4a00acce20e2227b3f355be89bc6827"},
+    {file = "cachetools-5.5.0-py3-none-any.whl", hash = "sha256:02134e8439cdc2ffb62023ce1debca2944c3f289d66bb17ead3ab3dede74b292"},
+    {file = "cachetools-5.5.0.tar.gz", hash = "sha256:2cc24fb4cbe39633fb7badd9db9ca6295d766d9c2995f245725a46715d050f2a"},
 ]
 
 [[package]]
@@ -2381,4 +2381,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "41ab72f67d9792943e6fd89755eb25e8b8644ecddb1e2363929649bc33352a4e"
+content-hash = "815fab6805025e4b806c56eb1a503a1e7d52871ae6db305ca138269505d2aa8f"
