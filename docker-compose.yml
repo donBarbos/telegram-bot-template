@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     image: bot:latest
-    container_name: bot
+    container_name: ${COMPOSE_PROJECT_NAME}-bot
     restart: always
     env_file:
       - .env
@@ -21,7 +21,7 @@ services:
     build:
       context: .
       dockerfile: ./admin/Dockerfile
-    container_name: admin
+    container_name: ${COMPOSE_PROJECT_NAME}-admin
     restart: always
     env_file:
       - .env
@@ -36,7 +36,7 @@ services:
 
   postgres:
     image: postgres:14-alpine
-    container_name: postgres
+    container_name: ${COMPOSE_PROJECT_NAME}-postgres
     restart: always
     env_file:
       - .env
@@ -52,7 +52,7 @@ services:
 
   pgbouncer:
     image: edoburu/pgbouncer
-    container_name: pgbouncer
+    container_name: ${COMPOSE_PROJECT_NAME}-pgbouncer
     restart: always
     env_file:
       - .env
@@ -72,9 +72,33 @@ services:
     networks:
       - app
 
+
+  pgbackup:
+    container_name: ${COMPOSE_PROJECT_NAME}-pgbackup
+    image: prodrigestivill/postgres-backup-local
+    restart: always
+    volumes:
+      - backups-data:/backups
+    networks:
+      - app
+    depends_on:
+      - postgres
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_EXTRA_OPTS=-Z9 --schema=public --blobs
+      - SCHEDULE=@every 0h30m00s
+      - BACKUP_KEEP_DAYS=7
+      - BACKUP_KEEP_WEEKS=4
+      - BACKUP_KEEP_MONTHS=6
+      - HEALTHCHECK_PORT=81
+
+
   redis:
     image: redis:7-alpine
-    container_name: redis
+    container_name: ${COMPOSE_PROJECT_NAME}-redis
     restart: always
     env_file:
       - .env
@@ -88,7 +112,7 @@ services:
 
   migrator:
     image: bot:latest
-    container_name: migrator
+    container_name: ${COMPOSE_PROJECT_NAME}-migrator
     restart: "on-failure"
     command: alembic upgrade head
     env_file:
@@ -103,7 +127,7 @@ services:
   # MONITORING
   node-exporter:
     image: prom/node-exporter:latest
-    container_name: node-exporter
+    container_name: ${COMPOSE_PROJECT_NAME}-node-exporter
     restart: unless-stopped
     ports:
       - 9100:9100
@@ -121,7 +145,7 @@ services:
 
   prometheus:
     image: prom/prometheus:v2.43.0
-    container_name: prometheus
+    container_name: ${COMPOSE_PROJECT_NAME}-prometheus
     restart: unless-stopped
     env_file:
       - .env
@@ -144,7 +168,7 @@ services:
 
   grafana:
     image: grafana/grafana:8.5.22
-    container_name: grafana
+    container_name: ${COMPOSE_PROJECT_NAME}-grafana
     restart: always
     env_file:
       - .env
@@ -172,6 +196,7 @@ networks:
     driver: bridge
 
 volumes:
+  backups-data: {}
   postgres-data: {}
   redis-data: {}
   prometheus-data: {}
