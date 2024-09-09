@@ -27,13 +27,13 @@ files = [
 
 [[package]]
 name = "aiogram"
-version = "3.12.0"
+version = "3.13.0"
 description = "Modern and fully asynchronous framework for Telegram Bot API"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "aiogram-3.12.0-py3-none-any.whl", hash = "sha256:4b9969d6751b810748835d341aafc0b44fe4675d741bff1b07c24daa47edf79f"},
-    {file = "aiogram-3.12.0.tar.gz", hash = "sha256:582a5cf058fccc470ed08c9aa36fdef5b708d01965e51963c3969596c1d2ac19"},
+    {file = "aiogram-3.13.0-py3-none-any.whl", hash = "sha256:1e93791441a7bebea9558fbe3590ba360cba1351c542691fab47dfc6a1750119"},
+    {file = "aiogram-3.13.0.tar.gz", hash = "sha256:b54307447f6fbfdf2418732a1e47c75bed6f4e75c580b073a077093aa4e60860"},
 ]
 
 [package.dependencies]
@@ -45,7 +45,7 @@ pydantic = ">=2.4.1,<2.9"
 typing-extensions = ">=4.7.0,<=5.0"
 
 [package.extras]
-cli = ["aiogram-cli (>=1.0.3,<1.1.0)"]
+cli = ["aiogram-cli (>=1.1.0,<2.0.0)"]
 dev = ["black (>=24.4.2,<24.5.0)", "isort (>=5.13.2,<5.14.0)", "motor-types (>=1.0.0b4,<1.1.0)", "mypy (>=1.10.0,<1.11.0)", "packaging (>=24.1,<25.0)", "pre-commit (>=3.5,<4.0)", "ruff (>=0.5.1,<0.6.0)", "toml (>=0.10.2,<0.11.0)"]
 docs = ["furo (>=2023.9.10,<2023.10.0)", "markdown-include (>=0.8.1,<0.9.0)", "pygments (>=2.16.1,<2.17.0)", "pymdown-extensions (>=10.3,<11.0)", "sphinx (>=7.2.6,<7.3.0)", "sphinx-autobuild (>=2021.3.14,<2021.4.0)", "sphinx-copybutton (>=0.5.2,<0.6.0)", "sphinx-intl (>=2.1.0,<2.2.0)", "sphinx-substitution-extensions (>=2022.2.16,<2022.3.0)", "sphinxcontrib-towncrier (>=0.4.0a0,<0.5.0)", "towncrier (>=24.7.1,<24.8.0)"]
 fast = ["aiodns (>=3.0.0)", "uvloop (>=0.17.0)"]
@@ -2396,4 +2396,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "e2c97530bb1c64b43681dc8e57191e8ec156ba3cf325972b78c8d771c0a4a0dc"
+content-hash = "c6d92a4b621ccc2cca16bc826f03fb0e602bd7ec00313603c79b8b007b52b32b"
