@@ -27,30 +27,30 @@ files = [
 
 [[package]]
 name = "aiogram"
-version = "3.13.0"
+version = "3.13.1"
 description = "Modern and fully asynchronous framework for Telegram Bot API"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "aiogram-3.13.0-py3-none-any.whl", hash = "sha256:1e93791441a7bebea9558fbe3590ba360cba1351c542691fab47dfc6a1750119"},
-    {file = "aiogram-3.13.0.tar.gz", hash = "sha256:b54307447f6fbfdf2418732a1e47c75bed6f4e75c580b073a077093aa4e60860"},
+    {file = "aiogram-3.13.1-py3-none-any.whl", hash = "sha256:148cbba15c2b6e0bc482aff6ae86848ed43e023b7102336bad17698242693000"},
+    {file = "aiogram-3.13.1.tar.gz", hash = "sha256:2674640ae74501ae30e68a5354e03f12e10db3adbcbd475bb56904536288c9c9"},
 ]
 
 [package.dependencies]
-aiofiles = ">=23.2.1,<23.3.0"
+aiofiles = ">=23.2.1,<24.2"
 aiohttp = ">=3.9.0,<3.11"
 certifi = ">=2023.7.22"
 magic-filter = ">=1.0.12,<1.1"
-pydantic = ">=2.4.1,<2.9"
+pydantic = {version = ">=2.4.1,<2.10", markers = "python_version >= \"3.9\""}
 typing-extensions = ">=4.7.0,<=5.0"
 
 [package.extras]
 cli = ["aiogram-cli (>=1.1.0,<2.0.0)"]
 dev = ["black (>=24.4.2,<24.5.0)", "isort (>=5.13.2,<5.14.0)", "motor-types (>=1.0.0b4,<1.1.0)", "mypy (>=1.10.0,<1.11.0)", "packaging (>=24.1,<25.0)", "pre-commit (>=3.5,<4.0)", "ruff (>=0.5.1,<0.6.0)", "toml (>=0.10.2,<0.11.0)"]
-docs = ["furo (>=2023.9.10,<2023.10.0)", "markdown-include (>=0.8.1,<0.9.0)", "pygments (>=2.16.1,<2.17.0)", "pymdown-extensions (>=10.3,<11.0)", "sphinx (>=7.2.6,<7.3.0)", "sphinx-autobuild (>=2021.3.14,<2021.4.0)", "sphinx-copybutton (>=0.5.2,<0.6.0)", "sphinx-intl (>=2.1.0,<2.2.0)", "sphinx-substitution-extensions (>=2022.2.16,<2022.3.0)", "sphinxcontrib-towncrier (>=0.4.0a0,<0.5.0)", "towncrier (>=24.7.1,<24.8.0)"]
+docs = ["furo (>=2024.8.6,<2024.9.0)", "markdown-include (>=0.8.1,<0.9.0)", "pygments (>=2.18.0,<2.19.0)", "pymdown-extensions (>=10.3,<11.0)", "sphinx (>=8.0.2,<8.1.0)", "sphinx-autobuild (>=2024.9.3,<2024.10.0)", "sphinx-copybutton (>=0.5.2,<0.6.0)", "sphinx-intl (>=2.2.0,<2.3.0)", "sphinx-substitution-extensions (>=2024.8.6,<2024.9.0)", "sphinxcontrib-towncrier (>=0.4.0a0,<0.5.0)", "towncrier (>=24.8.0,<24.9.0)"]
 fast = ["aiodns (>=3.0.0)", "uvloop (>=0.17.0)"]
 i18n = ["babel (>=2.13.0,<2.14.0)"]
-mongo = ["motor (>=3.3.2,<3.4.0)"]
+mongo = ["motor (>=3.3.2,<3.7.0)"]
 proxy = ["aiohttp-socks (>=0.8.3,<0.9.0)"]
 redis = ["redis[hiredis] (>=5.0.1,<5.1.0)"]
 test = ["aresponses (>=2.1.6,<2.2.0)", "pycryptodomex (>=3.19.0,<3.20.0)", "pytest (>=7.4.2,<7.5.0)", "pytest-aiohttp (>=1.0.5,<1.1.0)", "pytest-asyncio (>=0.21.1,<0.22.0)", "pytest-cov (>=4.1.0,<4.2.0)", "pytest-html (>=4.0.2,<4.1.0)", "pytest-lazy-fixture (>=0.6.3,<0.7.0)", "pytest-mock (>=3.12.0,<3.13.0)", "pytest-mypy (>=0.10.3,<0.11.0)", "pytz (>=2023.3,<2024.0)"]
@@ -2396,4 +2396,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "6dd9f6a6ad49ab227f96492edef5c44209161d83e6b07b0324ae453039ae1c84"
+content-hash = "94f45809e332c032930b2573561ee5999c0ac4327a81a1c829c196ae18dd298b"
