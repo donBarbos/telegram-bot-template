@@ -19,7 +19,7 @@ aiogram = "^3.13.1"
 asyncpg = "^0.29.0"
 redis = "^5.1.1"
 loguru = "^0.7.2"
-sentry-sdk = {extras = ["loguru"], version = "^2.15.0"}
+sentry-sdk = {extras = ["loguru"], version = "^2.16.0"}
 aiohttp = {extras = ["speedups"], version = "^3.10.9"}
 uvloop = "^0.20.0"
 babel = "^2.16.0"
