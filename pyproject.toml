@@ -36,7 +36,7 @@ flask-security-too = "^5.5.2"
 flask-caching = "^2.3.0"
 flask-babel = "^4.0.0"
 flask-sqlalchemy = "^3.1.1"
-psycopg2-binary = "^2.9.9"
+psycopg2-binary = "^2.9.10"
 tablib = {extras = ["xlsx"], version = "^3.7.0"}
 
 [tool.poetry.group.dev.dependencies]
