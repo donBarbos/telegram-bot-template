@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.13.1\n"
+"Generated-By: Babel 2.15.0\n"
 
 #: bot/handlers/export_users.py:29
 msgid "user counter: <b>{count}</b>"
@@ -58,5 +58,6 @@ msgstr "Info"
 #: bot/middlewares/auth.py:41
 msgid "first message"
 msgstr ""
-"👋 <b>Welcome to the bot.</b>\n\n"
+"👋 <b>Welcome to the bot.</b>\n"
+"\n"
 "To start using the bot you can start with /menu"
