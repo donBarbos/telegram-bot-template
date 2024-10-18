@@ -5,7 +5,7 @@ ENV POETRY_NO_INTERACTION=1 \
     POETRY_VIRTUALENVS_CREATE=0 \
     POETRY_HOME="/etc/poetry" \
     POETRY_CACHE_DIR="/tmp/poetry_cache" \
-    POETRY_VERSION=1.7.0
+    POETRY_VERSION=1.8.3
 
 WORKDIR /usr/src/app
 
