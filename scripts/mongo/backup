@@ -1,0 +1,17 @@
+#!/bin/sh -e
+
+# The directory where backups are stored
+BACKUP_DIRECTORY="/backups"
+
+echo "Backup process started."
+
+# Save the current date in YYYY-MM-DD format to a variable
+current_datetime=$(date +%Y-%m-%d-%H%M%S)
+
+# Full path to the file
+backup_filename="${BACKUP_DIRECTORY}/backup-${current_datetime}.dump.gz"
+
+# Run mongodump and compress its output, then save to /backups with the current date in the filename
+mongodump --archive | gzip > "$backup_filename"
+
+echo "Backup has been created and saved to ${backup_filename}"

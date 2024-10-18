@@ -1,0 +1,21 @@
+#!/bin/sh -e
+
+# The directory where backups are stored
+BACKUP_DIRECTORY="/backups"
+
+echo "Backup process started."
+
+export MYSQL_USER="${MYSQL_USER}"
+export MYSQL_PASSWORD="${MYSQL_PASSWORD}"
+export MYSQL_DATABASE="${MYSQL_DATABASE}"
+
+# Save the current date in YYYY-MM-DD format to a variable
+current_datetime=$(date +%Y-%m-%d-%H%M%S)
+
+# Full path to the file
+backup_filename="${BACKUP_DIRECTORY}/backup-${current_datetime}.dump.gz"
+
+# Run mysqldump and compress its output, then save to /backups with the current date in the filename
+mysqldump -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE" | gzip > "$backup_filename"
+
+echo "Backup has been created and saved to ${backup_filename}"
