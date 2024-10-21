@@ -1,59 +1,68 @@
-.DEFAULT_GOAL:=help
-
-.PHONY: default deps up down stop kill build ps exec logs mm migrate downgrade check format clean backup mount-docker-backup restore extract update compile babel
+include .env
+export
 
 LOCALES = bot/locales
 
-help:
-	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z0-9_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+.PHONY: help
 
-deps:
+help: ## Display this help screen
+	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+
+deps:	## Install dependencies
 	@poetry install --no-root
+.PHONY: deps
 
-up:
-	docker compose up -d
+compose-up: ## Run docker compose
+	docker compose up --build -d
+.PHONY: compose-up
 
-down:
+compose-down: ## Down docker compose
 	docker compose down
+.PHONY: compose-down
 
-stop:
+compose-stop: ## docker compose stop
 	docker compose stop
 
-kill:
+compose-kill: ## docker compose kill
 	docker compose kill
 
-build:
+compose-build: ## docker compose build
 	docker compose build
 
-ps:
+compose-ps: ## docker compose ps
 	docker compose ps
 
-exec:
+compose-exec: ## Exec command in app container
 	docker compose exec app $(args)
 
 logs:
 	docker compose logs $(args) -f
 
 # MIGRATIONS
-mm:
+mm: ## Create new migrations with args name in docker compose
 	docker compose exec bot alembic revision --autogenerate -m "$(args)"
+.PHONY: mm
 
-migrate:
+migrate: ## Upgrade migrations in docker compose
 	docker compose exec bot alembic upgrade head
+.PHONY: migrate
 
-downgrade:
+downgrade: ## Downgrade to args name migration in docker compose
 	docker compose exec bot alembic downgrade $(args)
+.PHONY: downgrade
 
 # STYLE
-check:
+check: ## Run linters to check code
 	@poetry run ruff check .
 	@poetry run ruff format --check .
+.PHONY: check
 
-format:
+format: ## Run linters to fix code
 	@poetry run ruff check --fix .
 	@poetry run ruff format .
+.PHONY: format
 
-clean:
+clean: ## Delete all temporary and generated files
 	@rm -rf .pytest_cache .ruff_cache .hypothesis build/ -rf dist/ .eggs/ .coverage coverage.xml coverage.json htmlcov/ .mypy_cache
 	@find . -name '*.egg-info' -exec rm -rf {} +
 	@find . -name '*.egg' -exec rm -f {} +
@@ -63,25 +72,33 @@ clean:
 	@find . -name '__pycache__' -exec rm -rf {} +
 	@find . -name '.pytest_cache' -exec rm -rf {} +
 	@find . -name '.ipynb_checkpoints' -exec rm -rf {} +
+.PHONY: clean
 
 # BACKUPS
 backup:
 	docker compose exec bot scripts/postgres/backup
+.PHONY: backup
 
 mount-docker-backup:
 	docker cp app_db:/backups/$(args) ./$(args)
+.PHONY: mount-docker-backup
 
 restore:
 	docker compose exec app_db scripts/postgres/restore $(args)
+.PHONY: restore
 
 # I18N
-extract:
+babel-extract: ## Extracts translatable strings from the source code into a .pot file
 	@poetry run pybabel extract --input-dirs=. -o $(LOCALES)/messages.pot
+.PHONY: locales-extract
 
-update:
+babel-update: ## Updates .pot files by merging changed strings into the existing .pot files
 	@poetry run pybabel update -d $(LOCALES) -i $(LOCALES)/messages.pot
+.PHONY: locales-update
 
-compile:
+babel-compile: ## Compiles translation .po files into binary .mo files
 	@poetry run pybabel compile -d $(LOCALES)
+.PHONY: locales-compile
 
 babel: extract update
+.PHONY: babel
