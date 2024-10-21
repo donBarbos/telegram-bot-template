@@ -9,7 +9,7 @@
   <a href="https://github.com/donBarbos/telegram-bot-template/actions/workflows/linters.yml"><img src="https://img.shields.io/github/actions/workflow/status/donBarbos/telegram-bot-template/linters.yml?label=linters" alt="Linters Status"></a>
   <a href="https://github.com/donBarbos/telegram-bot-template/actions/workflows/docker-image.yml"><img src="https://img.shields.io/github/actions/workflow/status/donBarbos/telegram-bot-template/docker-image.yml?label=docker%20image" alt="Docker Build Status"></a>
   <a href="https://www.python.org/downloads"><img src="https://img.shields.io/badge/python-3.10%2B-blue" alt="Python"></a>
-  <a href="https://github.com/donBarbos/telegram-bot-template/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-LGPLv3-blue.svg" alt="License"></a>
+  <a href="https://github.com/donBarbos/telegram-bot-template/blob/main/LICENSE"><img src="https://img.shields.io/github/license/donbarbos/telegram-bot-template?color=blue" alt="License"></a>
   <a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" alt="Code style"></a>
 <p>
 
@@ -164,6 +164,8 @@ to launch the bot you only need a token bot, database and redis settings, everyt
 │   └── prometheus # Configuration files for Prometheus
 │       └── prometheus.yml
 │
+├── scripts/ # Sripts folder
+├── Makefile # List of commands for standard
 ├── alembic.ini # Configuration file for migrations
 ├── docker-compose.yml # Docker Compose configuration file for orchestrating containers
 ├── Dockerfile # Dockerfile for Telegram Bot
