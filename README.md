@@ -190,6 +190,10 @@ to launch the bot you only need a token bot, database and redis settings, everyt
 -   `prometheus` — time series database for collecting metrics from various systems
 -   `grafana` — visualization and analysis from various sources, including Prometheus
 
+## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=donBarbos/telegram-bot-template&type=Date)](https://star-history.com/#donBarbos/telegram-bot-template&Date)
+
 ## 👷 Contributing
 
 First off, thanks for taking the time to contribute! Contributions are what makes the open-source community such an amazing place to learn, inspire, and create. Any contributions you make will benefit everybody else and are greatly appreciated.
