@@ -31,7 +31,7 @@ prometheus-client = "^0.21.0"
 
 [tool.poetry.group.admin.dependencies]
 gunicorn = "^23.0.0"
-flask = "^3.0.3"
+flask = "^3.1.0"
 flask-admin = "^1.6.1"
 flask-security-too = "^5.5.2"
 flask-caching = "^2.3.0"
