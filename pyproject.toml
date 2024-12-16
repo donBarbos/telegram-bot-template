@@ -13,7 +13,7 @@ package-mode = false
 python = "^3.10"
 sqlalchemy = "^2.0.36"
 pydantic = "^2.9.2"
-pydantic-settings = "^2.6.1"
+pydantic-settings = "^2.7.0"
 
 [tool.poetry.group.bot.dependencies]
 aiogram = "^3.15.0"
