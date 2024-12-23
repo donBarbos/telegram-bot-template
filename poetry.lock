@@ -27,21 +27,21 @@ files = [
 
 [[package]]
 name = "aiogram"
-version = "3.15.0"
+version = "3.16.0"
 description = "Modern and fully asynchronous framework for Telegram Bot API"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "aiogram-3.15.0-py3-none-any.whl", hash = "sha256:b18c4edd76dc218e309e602a2cb6445ac1f11cce6542b0f09703c7470aa1afdb"},
-    {file = "aiogram-3.15.0.tar.gz", hash = "sha256:00e584e0d0264a7da9b6a4f09b421ff2e3939e4d62c3dd483b025fd44ec45859"},
+    {file = "aiogram-3.16.0-py3-none-any.whl", hash = "sha256:c92a52aff032217bce5df4089a8ff8f0b86ce0533126c22f3fe55e6b1b230a66"},
+    {file = "aiogram-3.16.0.tar.gz", hash = "sha256:b7fd7a6c6434d831472c1d6d971e23348966a9aeb71a1c0e575a01990390e0f1"},
 ]
 
 [package.dependencies]
 aiofiles = ">=23.2.1,<24.2"
-aiohttp = ">=3.9.0,<3.11"
+aiohttp = ">=3.9.0,<3.12"
 certifi = ">=2023.7.22"
 magic-filter = ">=1.0.12,<1.1"
-pydantic = ">=2.4.1,<2.10"
+pydantic = ">=2.4.1,<2.11"
 typing-extensions = ">=4.7.0,<=5.0"
 
 [package.extras]
@@ -2487,4 +2487,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "c923e93892ca7f5b4a66745813f9655d4b5e1b4ab98da9b7af88257b61d0e635"
+content-hash = "1f1f17634ba3eede6fcf44388a8b9d14d955392ad5d7b059310cffdc9b29d4d8"
