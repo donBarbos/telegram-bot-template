@@ -1,11 +1,14 @@
 from __future__ import annotations
-from typing import Any, Awaitable, Callable
+from typing import TYPE_CHECKING, Any, Callable
 
 from aiogram import BaseMiddleware
 from aiogram.types import Message
 from cachetools import TTLCache
 
 from bot.core.config import settings
+
+if TYPE_CHECKING:
+    from collections.abc import Awaitable
 
 
 class ThrottlingMiddleware(BaseMiddleware):

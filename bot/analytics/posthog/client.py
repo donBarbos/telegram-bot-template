@@ -26,12 +26,15 @@ class PosthogTelegramLogger(AbstractAnalyticsLogger):
         url = f"{self._base_url}/api/event/?personal_api_key={self._api_token}"
         params = dict(event)
 
-        async with ClientSession() as session, session.post(
-            url,
-            headers=self._headers,
-            json=params,
-            timeout=self._timeout,
-        ) as response:
+        async with (
+            ClientSession() as session,
+            session.post(
+                url,
+                headers=self._headers,
+                json=params,
+                timeout=self._timeout,
+            ) as response,
+        ):
             json_response = await response.json(content_type="application/json")
 
         logger.info("Send record to Posthog")

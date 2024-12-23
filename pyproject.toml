@@ -50,7 +50,7 @@ fix = true
 unsafe-fixes = true
 line-length = 120
 lint.select = ["ALL"]
-lint.ignore = ["D", "ANN101", "ANN102", "ANN401", "TD003", "FIX002", "COM812", "ISC001", "FBT001", "FBT002", "RUF", "ERA", "ARG005"]
+lint.ignore = ["D", "ANN401", "TD003", "FIX002", "COM812", "ISC001", "FBT001", "FBT002", "RUF", "ERA", "ARG005"]
 cache-dir = "/tmp/ruff-cache/"
 extend-exclude = ["logs", "configs", "migrations"]
 

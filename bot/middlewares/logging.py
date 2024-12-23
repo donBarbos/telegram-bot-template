@@ -1,10 +1,12 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, Any, Awaitable, Callable
+from typing import TYPE_CHECKING, Any, Callable
 
 from aiogram import BaseMiddleware
 from loguru import logger
 
 if TYPE_CHECKING:
+    from collections.abc import Awaitable
+
     from aiogram.types import CallbackQuery, ChatMemberUpdated, InlineQuery, Message, PreCheckoutQuery, Update
 
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
 from functools import wraps
-from typing import Any, Awaitable, Callable, TypeVar
+from typing import TYPE_CHECKING, Any, Callable, TypeVar
 
 from aiogram.types import CallbackQuery, Message
 
@@ -8,6 +8,9 @@ from bot.analytics.amplitude import AmplitudeTelegramLogger
 from bot.analytics.types import AbstractAnalyticsLogger, BaseEvent, EventProperties, EventType, UserProperties
 from bot.core.config import settings
 from bot.utils.singleton import SingletonMeta
+
+if TYPE_CHECKING:
+    from collections.abc import Awaitable
 
 T = TypeVar("T")
 

@@ -1,12 +1,14 @@
 from __future__ import annotations
 import asyncio
-from typing import TYPE_CHECKING, Any, Awaitable, Callable, Coroutine
+from typing import TYPE_CHECKING, Any, Callable
 
 import prometheus_client
 from aiohttp.web_exceptions import HTTPException
 from aiohttp.web_middlewares import middleware
 
 if TYPE_CHECKING:
+    from collections.abc import Awaitable, Coroutine
+
     from aiohttp.web_request import Request
     from aiohttp.web_response import Response
 

@@ -22,7 +22,7 @@ class WebhookSettings(EnvBaseSettings):
     USE_WEBHOOK: bool = False
     WEBHOOK_BASE_URL: str = "https://xxx.ngrok-free.app"
     WEBHOOK_PATH: str = "/webhook"
-    WEBHOOK_SECRET: str = "Pl7U9AJUFb2"
+    WEBHOOK_SECRET: str = ""
     WEBHOOK_HOST: str = "localhost"
     WEBHOOK_PORT: int = 8080
 

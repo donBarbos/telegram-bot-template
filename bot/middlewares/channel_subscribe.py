@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, Any, Awaitable, Callable
+from typing import TYPE_CHECKING, Any, Callable
 
 from aiogram import BaseMiddleware, Bot
 from aiogram.enums import ChatMemberStatus
@@ -7,6 +7,8 @@ from aiogram.exceptions import TelegramNotFound
 from aiogram.methods import GetChatMember
 
 if TYPE_CHECKING:
+    from collections.abc import Awaitable
+
     from aiogram.types import Message
 
 

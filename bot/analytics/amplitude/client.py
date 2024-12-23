@@ -24,12 +24,15 @@ class AmplitudeTelegramLogger(AbstractAnalyticsLogger):
         """Implementation of interaction with Amplitude API."""
         data = {"api_key": self._api_token, "events": [event.to_dict()]}
 
-        async with ClientSession() as session, session.post(
-            self._base_url,
-            headers=self._headers,
-            data=orjson.dumps(data),
-            timeout=self._timeout,
-        ) as response:
+        async with (
+            ClientSession() as session,
+            session.post(
+                self._base_url,
+                headers=self._headers,
+                data=orjson.dumps(data),
+                timeout=self._timeout,
+            ) as response,
+        ):
             json_response = await response.json(content_type="application/json")
 
         self._validate_response(json_response)
