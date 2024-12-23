@@ -1,35 +1,23 @@
 name: Automerge Dependabot PRs
 
-on: pull_request_target
-
-permissions:
-  pull-requests: write
-  contents: write
+on:
+  workflow_run:
+    types:
+      - completed
+    workflows:
+      - Linting
 
 jobs:
-  dependabot:
+  merge-me:
+    name: Merge me!
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' }}
     steps:
-      - name: Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v2
+      - # It is often a desired behavior to merge only when a workflow execution
+        # succeeds. This can be changed as needed.
+        if: ${{ github.event.workflow_run.conclusion == "success" }}
+        name: Merge me!
+        uses: ridedott/merge-me-action@v2
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-
-      - name: Enable auto-merge for Dependabot PRs
-        run: |
-          if gh pr merge --auto --squash "$PR_URL"; then
-            echo "PR merged successfully"
-          else
-            MERGEABLE=$(gh pr view "$PR_URL" --json mergeable --jq '.mergeable')
-            if [ "$MERGEABLE" = "CONFLICTING" ]; then
-              gh pr comment "$PR_URL" --body "@dependabot recreate"
-            else
-              echo "Merge failed for another reason"
-            fi
-          fi
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{github.token}}
-          GITHUB_TOKEN: ${{secrets.AUTOMERGE_GITHUB_ACCESS_TOKEN}}
+          # This must be used as GitHub Actions token does not support pushing
+          # to protected branches.
+          GITHUB_TOKEN: ${{ secrets.AUTOMERGE_GITHUB_ACCESS_TOKEN }}
