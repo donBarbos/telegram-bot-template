@@ -50,7 +50,7 @@ fix = true
 unsafe-fixes = true
 line-length = 120
 lint.select = ["ALL"]
-lint.ignore = ["D", "ANN401", "TD003", "FIX002", "COM812", "ISC001", "FBT001", "FBT002", "RUF", "ERA", "ARG005"]
+lint.ignore = ["D", "ANN401", "FIX002", "COM812", "ISC001", "FBT001", "FBT002", "ERA", "ARG005", "PGH003"]
 cache-dir = "/tmp/ruff-cache/"
 extend-exclude = ["logs", "configs", "migrations"]
 
@@ -64,6 +64,7 @@ known-local-folder = ["bot", "admin"]
 [tool.mypy]
 python_version = "3.10"
 files = "bot/*.py"
+plugins = ["pydantic.mypy"]
 ignore_missing_imports = false
 warn_return_any = true
 warn_unused_configs = true

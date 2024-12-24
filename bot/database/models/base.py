@@ -1,3 +1,4 @@
+from __future__ import annotations
 import datetime
 from typing import Annotated
 
@@ -10,8 +11,8 @@ created_at = Annotated[datetime.datetime, mapped_column(server_default=text("TIM
 
 
 class Base(DeclarativeBase):
-    repr_cols_num: int = 3  # print first columns
-    repr_cols: tuple = ()  # extra printed columns
+    repr_cols_num = 3  # print first columns
+    repr_cols: tuple[str, ...] = ()  # extra printed columns
 
     def __repr__(self) -> str:
         cols = [

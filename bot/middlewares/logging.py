@@ -7,7 +7,7 @@ from loguru import logger
 if TYPE_CHECKING:
     from collections.abc import Awaitable
 
-    from aiogram.types import CallbackQuery, ChatMemberUpdated, InlineQuery, Message, PreCheckoutQuery, Update
+    from aiogram.types import CallbackQuery, ChatMemberUpdated, InlineQuery, Message, PreCheckoutQuery, TelegramObject
 
 
 class LoggingMiddleware(BaseMiddleware):
@@ -97,15 +97,19 @@ class LoggingMiddleware(BaseMiddleware):
 
     async def __call__(
         self,
-        handler: Callable[[Update, dict[str, Any]], Awaitable[Any]],
-        event: Update,
+        handler: Callable[[TelegramObject, dict[str, Any]], Awaitable[Any]],
+        event: TelegramObject,
         data: dict[str, Any],
     ) -> Any:
-        print_attrs: dict = {}
+        print_attrs: dict[str, Any] = {}
+        message: Message | None = getattr(event, "message", None)
+        callback_query: CallbackQuery | None = getattr(event, "callback_query", None)
+        inline_query: InlineQuery | None = getattr(event, "inline_query", None)
+        pre_checkout_query: PreCheckoutQuery | None = getattr(event, "pre_checkout_query", None)
+        my_chat_member: ChatMemberUpdated | None = getattr(event, "my_chat_member", None)
+        chat_member: ChatMemberUpdated | None = getattr(event, "chat_member", None)
 
-        if event.message:
-            message: Message = event.message
-
+        if message:
             print_attrs = self.process_message(message)
 
             logger_msg = (
@@ -113,9 +117,7 @@ class LoggingMiddleware(BaseMiddleware):
                 + " | ".join(f"{key}: {value}" for key, value in print_attrs.items() if value is not None),
             )
             self.logger.info(*logger_msg)
-        elif event.callback_query:
-            callback_query: CallbackQuery = event.callback_query
-
+        elif callback_query:
             print_attrs = self.process_callback_query(callback_query)
 
             logger_msg = (
@@ -123,9 +125,7 @@ class LoggingMiddleware(BaseMiddleware):
                 + " | ".join(f"{key}: {value}" for key, value in print_attrs.items() if value is not None),
             )
             self.logger.info(*logger_msg)
-        elif event.inline_query:
-            inline_query: InlineQuery = event.inline_query
-
+        elif inline_query:
             print_attrs = self.process_inline_query(inline_query)
 
             logger_msg = (
@@ -133,9 +133,7 @@ class LoggingMiddleware(BaseMiddleware):
                 + " | ".join(f"{key}: {value}" for key, value in print_attrs.items() if value is not None),
             )
             self.logger.info(*logger_msg)
-        elif event.pre_checkout_query:
-            pre_checkout_query: PreCheckoutQuery = event.pre_checkout_query
-
+        elif pre_checkout_query:
             print_attrs = self.process_pre_checkout_query(pre_checkout_query)
 
             logger_msg = (
@@ -143,20 +141,16 @@ class LoggingMiddleware(BaseMiddleware):
                 + " | ".join(f"{key}: {value}" for key, value in print_attrs.items() if value is not None),
             )
             self.logger.info(*logger_msg)
-        elif event.my_chat_member:
-            upd: ChatMemberUpdated = event.my_chat_member
-
-            print_attrs = self.process_my_chat_member(upd)
+        elif my_chat_member:
+            print_attrs = self.process_my_chat_member(my_chat_member)
 
             logger_msg = (
                 "received my chat member update | "
                 + " | ".join(f"{key}: {value}" for key, value in print_attrs.items() if value is not None),
             )
             self.logger.info(*logger_msg)
-        elif event.chat_member:
-            upd: ChatMemberUpdated = event.chat_member
-
-            print_attrs = self.process_chat_member(upd)
+        elif chat_member:
+            print_attrs = self.process_chat_member(chat_member)
 
             logger_msg = (
                 "received chat member update | "

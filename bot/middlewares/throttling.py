@@ -2,7 +2,6 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Any, Callable
 
 from aiogram import BaseMiddleware
-from aiogram.types import Message
 from cachetools import TTLCache
 
 from bot.core.config import settings
@@ -10,21 +9,26 @@ from bot.core.config import settings
 if TYPE_CHECKING:
     from collections.abc import Awaitable
 
+    from aiogram.types import Chat, TelegramObject
+
 
 class ThrottlingMiddleware(BaseMiddleware):
+    cache: TTLCache[int, Any]
+
     def __init__(self, rate_limit: float = settings.RATE_LIMIT) -> None:
         self.cache = TTLCache(maxsize=10_000, ttl=rate_limit)
 
     async def __call__(
         self,
-        handler: Callable[[Message, dict[str, Any]], Awaitable[Any]],
-        event: Message,
+        handler: Callable[[TelegramObject, dict[str, Any]], Awaitable[Any]],
+        event: TelegramObject,
         data: dict[str, Any],
     ) -> Any:
-        if not isinstance(event, Message):  # TODO(donBarbos): add support CallbackQuery or Update
+        chat: Chat | None = getattr(event, "chat", None)
+        if not chat:
             return await handler(event, data)
 
-        if event.chat.id in self.cache:
+        if chat.id in self.cache:
             return None
-        self.cache[event.chat.id] = None
+        self.cache[chat.id] = None
         return await handler(event, data)

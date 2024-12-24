@@ -11,14 +11,15 @@ from bot.utils.command import find_command_argument
 if TYPE_CHECKING:
     from collections.abc import Awaitable, Callable
 
+    from aiogram.types import TelegramObject
     from sqlalchemy.ext.asyncio import AsyncSession
 
 
 class AuthMiddleware(BaseMiddleware):
     async def __call__(
         self,
-        handler: Callable[[Message, dict[str, Any]], Awaitable[Any]],
-        event: Message,
+        handler: Callable[[TelegramObject, dict[str, Any]], Awaitable[Any]],
+        event: TelegramObject,
         data: dict[str, Any],
     ) -> Any:
         if not isinstance(event, Message):

@@ -12,7 +12,7 @@ from bot.utils.singleton import SingletonMeta
 if TYPE_CHECKING:
     from collections.abc import Awaitable
 
-T = TypeVar("T")
+_Func = TypeVar("_Func")
 
 
 class AnalyticsService(metaclass=SingletonMeta):
@@ -28,12 +28,17 @@ class AnalyticsService(metaclass=SingletonMeta):
             ),
         )
 
-    def track_event(self, event_name: EventType) -> Callable:
+    def track_event(
+        self,
+        event_name: EventType,
+    ) -> Callable[[Callable[..., Awaitable[_Func]]], Callable[..., Awaitable[_Func]]]:
         """Decorator for tracking events in Amplitude, Google Analytics or Posthog."""
 
-        def decorator(handler: Callable[[Message | CallbackQuery, dict[str, Any]], Awaitable[Any]]) -> Callable:
+        def decorator(
+            handler: Callable[[Message | CallbackQuery, dict[str, Any]], Awaitable[_Func]],
+        ) -> Callable[..., Awaitable[_Func]]:
             @wraps(handler)
-            async def wrapper(update: Message | CallbackQuery, *args: dict[str, T]) -> T | None:
+            async def wrapper(update: Message | CallbackQuery, *args: Any) -> Any:
                 if (isinstance(update, (Message, CallbackQuery))) and update.from_user:
                     user_id = update.from_user.id
                     first_name = update.from_user.first_name
@@ -44,6 +49,8 @@ class AnalyticsService(metaclass=SingletonMeta):
                 else:
                     return None
 
+                chat_id: int | None
+                chat_type: str | None
                 if isinstance(update, Message):
                     chat_id = update.chat.id
                     chat_type = update.chat.type

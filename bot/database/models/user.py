@@ -1,4 +1,4 @@
-# ruff: noqa: TCH001, TCH003, A003, F821
+# ruff: noqa: TC001, TC003, A003, F821
 from __future__ import annotations
 
 from sqlalchemy.orm import Mapped, mapped_column

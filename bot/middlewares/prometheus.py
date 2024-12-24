@@ -1,23 +1,23 @@
 from __future__ import annotations
 import asyncio
-from typing import TYPE_CHECKING, Any, Callable
+from typing import TYPE_CHECKING
 
 import prometheus_client
 from aiohttp.web_exceptions import HTTPException
 from aiohttp.web_middlewares import middleware
 
 if TYPE_CHECKING:
-    from collections.abc import Awaitable, Coroutine
-
+    from aiohttp.typedefs import Handler, Middleware
     from aiohttp.web_request import Request
-    from aiohttp.web_response import Response
+    from aiohttp.web_response import StreamResponse
 
 METRICS_PREFIX = "tgbot"
 
 
 def prometheus_middleware_factory(
-    metrics_prefix: str = METRICS_PREFIX, registry: prometheus_client.CollectorRegistry | None = None
-) -> Callable[[Request, Callable[[Request], Awaitable[Response]]], Coroutine[Any, Any, Response]]:
+    metrics_prefix: str = METRICS_PREFIX,
+    registry: prometheus_client.CollectorRegistry | None = None,
+) -> Middleware:
     used_registry = registry or prometheus_client.REGISTRY
 
     requests_metrics = prometheus_client.Counter(
@@ -58,11 +58,19 @@ def prometheus_middleware_factory(
     )
 
     @middleware
-    async def prometheus_middleware(request: Request, handler: Callable[[Request], Awaitable[Response]]) -> Response:
+    async def prometheus_middleware(request: Request, handler: Handler) -> StreamResponse:
         loop = asyncio.get_running_loop() or asyncio.get_event_loop()
 
         try:
-            path_template = request.match_info.route.resource.canonical
+            path_template = getattr(
+                getattr(
+                    request.match_info.route,
+                    "resource",
+                    None,
+                ),
+                "canonical",
+                "__not_matched__",
+            )
         except AttributeError:
             path_template = "__not_matched__"
 

@@ -1,4 +1,4 @@
-# ruff: noqa: N815, TCH003
+# ruff: noqa: N815, TC003
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from decimal import Decimal

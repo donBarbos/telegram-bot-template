@@ -9,7 +9,7 @@ from aiogram.methods import GetChatMember
 if TYPE_CHECKING:
     from collections.abc import Awaitable
 
-    from aiogram.types import Message
+    from aiogram.types import TelegramObject, User
 
 
 class ChannelSubscribeMiddleware(BaseMiddleware):
@@ -21,16 +21,15 @@ class ChannelSubscribeMiddleware(BaseMiddleware):
 
     async def __call__(
         self,
-        handler: Callable[[Message, dict[str, Any]], Awaitable[Any]],
-        event: Message,
+        handler: Callable[[TelegramObject, dict[str, Any]], Awaitable[Any]],
+        event: TelegramObject,
         data: dict[str, Any],
     ) -> Any:
-        message: Message = event
-
-        if not message.from_user:
+        user: User | None = getattr(event, "from_user", None)
+        if not user:
             return await handler(event, data)
 
-        user_id = message.from_user.id
+        user_id = user.id
         bot: Bot = data["bot"]
 
         if await self._is_subscribed(bot=bot, user_id=user_id):
