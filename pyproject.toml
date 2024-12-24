@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "telegram-bot-template"
-version = "2.3.4"
+version = "2.3.5"
 description = "Best way to create a scalable telegram bot with analytics"
 homepage = "https://github.com/donBarbos/telegram-bot-template"
 repository = "https://github.com/donBarbos/telegram-bot-template"
@@ -44,6 +44,7 @@ tablib = {extras = ["xlsx"], version = "^3.7.0"}
 ruff = "^0.8.4"
 mypy = "^1.14.0"
 pre-commit = "^4.0.1"
+types-cachetools = "^5.5.0.20240820"
 
 [tool.ruff]
 fix = true
