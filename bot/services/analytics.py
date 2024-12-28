@@ -16,10 +16,13 @@ _Func = TypeVar("_Func")
 
 
 class AnalyticsService(metaclass=SingletonMeta):
-    def __init__(self, logger: AbstractAnalyticsLogger) -> None:
+    def __init__(self, logger: AbstractAnalyticsLogger | None) -> None:
         self.logger = logger
 
     async def _track_error(self, user_id: int, error_text: str) -> None:
+        if not self.logger:
+            return
+
         await self.logger.log_event(
             BaseEvent(
                 user_id=user_id,
@@ -95,9 +98,7 @@ class AnalyticsService(metaclass=SingletonMeta):
 
         return decorator
 
-if settings.AMPLITUDE_API_KEY:
-    logger = AmplitudeTelegramLogger(api_token=settings.AMPLITUDE_API_KEY)
-else:
-    logger = None
+
+logger = AmplitudeTelegramLogger(api_token=settings.AMPLITUDE_API_KEY) if settings.AMPLITUDE_API_KEY else None
 
 analytics = AnalyticsService(logger)
