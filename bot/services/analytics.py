@@ -39,6 +39,9 @@ class AnalyticsService(metaclass=SingletonMeta):
         ) -> Callable[..., Awaitable[_Func]]:
             @wraps(handler)
             async def wrapper(update: Message | CallbackQuery, *args: Any) -> Any:
+                if not self.logger:
+                    return await handler(update, *args)
+
                 if (isinstance(update, (Message, CallbackQuery))) and update.from_user:
                     user_id = update.from_user.id
                     first_name = update.from_user.first_name
@@ -92,5 +95,9 @@ class AnalyticsService(metaclass=SingletonMeta):
 
         return decorator
 
+if settings.AMPLITUDE_API_KEY:
+    logger = AmplitudeTelegramLogger(api_token=settings.AMPLITUDE_API_KEY)
+else:
+    logger = None
 
-analytics = AnalyticsService(AmplitudeTelegramLogger(api_token=settings.AMPLITUDE_API_KEY))
+analytics = AnalyticsService(logger)
