@@ -42,7 +42,7 @@ tablib = {extras = ["xlsx"], version = "^3.7.0"}
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.8.4"
-mypy = "^1.14.0"
+mypy = "^1.14.1"
 pre-commit = "^4.0.1"
 types-cachetools = "^5.5.0.20240820"
 
