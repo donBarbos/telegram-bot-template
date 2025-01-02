@@ -1,18 +1,15 @@
 name: Automerge Dependabot PRs
 
 on:
-  pull_request:
-    branches:
-      - main
+  workflow_run:
+    workflows: [Linting]
+    types: [completed]
 
 jobs:
   merge-me:
     name: Merge me!
-    needs:
-      - lint
-      - docker
-      - hadolint
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Merge me!
         uses: ridedott/merge-me-action@v2
