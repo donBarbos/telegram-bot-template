@@ -41,7 +41,7 @@ psycopg2-binary = "^2.9.10"
 tablib = {extras = ["xlsx"], version = "^3.7.0"}
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.8.6"
+ruff = "^0.9.0"
 mypy = "^1.14.1"
 pre-commit = "^4.0.1"
 types-cachetools = "^5.5.0.20240820"
@@ -51,7 +51,7 @@ fix = true
 unsafe-fixes = true
 line-length = 120
 lint.select = ["ALL"]
-lint.ignore = ["D", "ANN401", "FIX002", "COM812", "ISC001", "FBT001", "FBT002", "ERA", "ARG005", "PGH003"]
+lint.ignore = ["D", "ANN401", "FIX002", "COM812", "ISC001", "FBT001", "FBT002", "ERA", "ARG005", "PGH003", "A005"]
 cache-dir = "/tmp/ruff-cache/"
 extend-exclude = ["logs", "configs", "migrations"]
 
