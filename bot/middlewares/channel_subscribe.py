@@ -46,7 +46,7 @@ class ChannelSubscribeMiddleware(BaseMiddleware):
                 except TelegramNotFound:
                     return False
 
-                if member.status in (ChatMemberStatus.LEFT, ChatMemberStatus.KICKED, ChatMemberStatus.RESTRICTED):
+                if member.status in {ChatMemberStatus.LEFT, ChatMemberStatus.KICKED, ChatMemberStatus.RESTRICTED}:
                     return False
 
         elif isinstance(self.chat_ids, (str, int)):
@@ -55,7 +55,7 @@ class ChannelSubscribeMiddleware(BaseMiddleware):
             except TelegramNotFound:
                 return False
 
-            if member.status in (ChatMemberStatus.LEFT, ChatMemberStatus.KICKED):
+            if member.status in {ChatMemberStatus.LEFT, ChatMemberStatus.KICKED}:
                 return False
 
         return True
