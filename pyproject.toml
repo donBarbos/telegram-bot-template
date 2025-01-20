@@ -26,7 +26,7 @@ uvloop = "^0.21.0"
 babel = "^2.16.0"
 cachetools = "^5.5.0"
 orjson = "^3.10.14"
-alembic = "^1.14.0"
+alembic = "^1.14.1"
 prometheus-client = "^0.21.1"
 
 [tool.poetry.group.admin.dependencies]
