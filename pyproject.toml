@@ -38,7 +38,7 @@ flask-caching = "^2.3.0"
 flask-babel = "^4.0.0"
 flask-sqlalchemy = "^3.1.1"
 psycopg2-binary = "^2.9.10"
-tablib = {extras = ["xlsx"], version = "^3.7.0"}
+tablib = {extras = ["xlsx"], version = "^3.8.0"}
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.9.2"
