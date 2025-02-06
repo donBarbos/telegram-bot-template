@@ -21,7 +21,7 @@ asyncpg = "^0.30.0"
 redis = "^5.2.1"
 loguru = "^0.7.3"
 sentry-sdk = {extras = ["loguru"], version = "^2.20.0"}
-aiohttp = {extras = ["speedups"], version = "^3.11.11"}
+aiohttp = {extras = ["speedups"], version = "^3.11.12"}
 uvloop = "^0.21.0"
 babel = "^2.17.0"
 cachetools = "^5.5.1"
