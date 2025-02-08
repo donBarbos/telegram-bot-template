@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, Any, Callable
+from typing import TYPE_CHECKING, Any
 
 from aiogram import BaseMiddleware, Bot
 from aiogram.enums import ChatMemberStatus
@@ -7,7 +7,7 @@ from aiogram.exceptions import TelegramNotFound
 from aiogram.methods import GetChatMember
 
 if TYPE_CHECKING:
-    from collections.abc import Awaitable
+    from collections.abc import Awaitable, Callable
 
     from aiogram.types import TelegramObject, User
 
@@ -49,7 +49,7 @@ class ChannelSubscribeMiddleware(BaseMiddleware):
                 if member.status in {ChatMemberStatus.LEFT, ChatMemberStatus.KICKED, ChatMemberStatus.RESTRICTED}:
                     return False
 
-        elif isinstance(self.chat_ids, (str, int)):
+        elif isinstance(self.chat_ids, str | int):
             try:
                 member = await bot(GetChatMember(chat_id=self.chat_ids, user_id=user_id))
             except TelegramNotFound:

@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, Any, Callable
+from typing import TYPE_CHECKING, Any
 
 from aiogram import BaseMiddleware
 from cachetools import TTLCache
@@ -7,7 +7,7 @@ from cachetools import TTLCache
 from bot.core.config import settings
 
 if TYPE_CHECKING:
-    from collections.abc import Awaitable
+    from collections.abc import Awaitable, Callable
 
     from aiogram.types import Chat, TelegramObject
 

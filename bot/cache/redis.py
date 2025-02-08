@@ -6,9 +6,8 @@ from bot.cache.serialization import AbstractSerializer, PickleSerializer
 from bot.core.loader import redis_client
 
 if TYPE_CHECKING:
-    from collections.abc import Awaitable
+    from collections.abc import Awaitable, Callable
     from datetime import timedelta
-    from typing import Callable
 
     from redis.asyncio import Redis
 

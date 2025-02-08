@@ -1,6 +1,6 @@
 from __future__ import annotations
 from functools import wraps
-from typing import TYPE_CHECKING, Any, Callable, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from aiogram.types import CallbackQuery, Message
 
@@ -10,7 +10,7 @@ from bot.core.config import settings
 from bot.utils.singleton import SingletonMeta
 
 if TYPE_CHECKING:
-    from collections.abc import Awaitable
+    from collections.abc import Awaitable, Callable
 
 _Func = TypeVar("_Func")
 
@@ -45,7 +45,7 @@ class AnalyticsService(metaclass=SingletonMeta):
                 if not self.logger:
                     return await handler(update, *args)
 
-                if (isinstance(update, (Message, CallbackQuery))) and update.from_user:
+                if (isinstance(update, Message | CallbackQuery)) and update.from_user:
                     user_id = update.from_user.id
                     first_name = update.from_user.first_name
                     last_name = update.from_user.last_name
