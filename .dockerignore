@@ -5,5 +5,5 @@
 !/bot/
 
 !/alembic.ini
-!/poetry.lock
 !/pyproject.toml
+!/uv.lock

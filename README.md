@@ -42,32 +42,32 @@
 
 ### 💻 Running on Local Machine
 
--   install dependencies using [Poetry](https://python-poetry.org "python package manager")
+-   set environment and install dependencies using [uv](https://docs.astral.sh/uv/ "python package manager") (you can find branch with Poetry [here](https://github.com/donBarbos/telegram-bot-template/tree/poetry-archive))
 
     ```bash
-    poetry install
+    uv sync --frozen --all-groups
     ```
 
--   start the necessary services (at least the database and redis)
+-   start the necessary services (at least your database and redis)
 
 -   configure environment variables in `.env` file
 
 -   start telegram bot
 
     ```bash
-    poetry run python -m bot
+    uv run python -m bot
     ```
 
 -   start admin panel
 
     ```bash
-    poetry run gunicorn -c admin/gunicorn_conf.py
+    uv run gunicorn -c admin/gunicorn_conf.py
     ```
 
 -   make migrations
 
     ```bash
-    poetry run alembic upgrade head
+    uv run alembic upgrade head
     ```
 
 ## 🌍 Environment variables
@@ -170,7 +170,7 @@ to launch the bot you only need a token bot, database and redis settings, everyt
 ├── docker-compose.yml # Docker Compose configuration file for orchestrating containers
 ├── Dockerfile # Dockerfile for Telegram Bot
 ├── LICENSE.md # License file for the project
-├── poetry.lock # Lock file for Poetry dependency management
+├── uv.lock # Lock file for UV dependency management
 ├── pyproject.toml # Configuration file for Python projects, including build tools, dependencies, and metadata
 └── README.md # Documentation
 ```
@@ -182,7 +182,7 @@ to launch the bot you only need a token bot, database and redis settings, everyt
 -   `aiogram` — asynchronous framework for Telegram Bot API
 -   `flask-admin` — simple and extensible administrative interface framework
 -   `loguru` — third party library for logging in Python
--   `poetry` — development workflow
+-   `uv` — development workflow
 -   `docker` — to automate deployment
 -   `postgres` — powerful, open source object-relational database system
 -   `pgbouncer` — connection pooler for PostgreSQL database

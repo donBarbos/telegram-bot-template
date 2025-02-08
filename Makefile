@@ -9,7 +9,7 @@ help: ## Display this help screen
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 deps:	## Install dependencies
-	@poetry install --no-root
+	@uv sync --frozen
 .PHONY: deps
 
 compose-up: ## Run docker compose
@@ -53,13 +53,13 @@ downgrade: ## Downgrade to args name migration in docker compose
 
 # STYLE
 check: ## Run linters to check code
-	@poetry run ruff check .
-	@poetry run ruff format --check .
+	@uv run ruff check .
+	@uv run ruff format --check .
 .PHONY: check
 
 format: ## Run linters to fix code
-	@poetry run ruff check --fix .
-	@poetry run ruff format .
+	@uv run ruff check --fix .
+	@uv run ruff format .
 .PHONY: format
 
 clean: ## Delete all temporary and generated files
@@ -89,15 +89,15 @@ restore:
 
 # I18N
 babel-extract: ## Extracts translatable strings from the source code into a .pot file
-	@poetry run pybabel extract --input-dirs=. -o $(LOCALES)/messages.pot
+	@uv run pybabel extract --input-dirs=. -o $(LOCALES)/messages.pot
 .PHONY: locales-extract
 
 babel-update: ## Updates .pot files by merging changed strings into the existing .pot files
-	@poetry run pybabel update -d $(LOCALES) -i $(LOCALES)/messages.pot
+	@uv run pybabel update -d $(LOCALES) -i $(LOCALES)/messages.pot
 .PHONY: locales-update
 
 babel-compile: ## Compiles translation .po files into binary .mo files
-	@poetry run pybabel compile -d $(LOCALES)
+	@uv run pybabel compile -d $(LOCALES)
 .PHONY: locales-compile
 
 babel: extract update

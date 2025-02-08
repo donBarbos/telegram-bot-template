@@ -1,50 +1,56 @@
-[tool.poetry]
+[project]
 name = "telegram-bot-template"
 version = "2.3.5"
 description = "Best way to create a scalable telegram bot with analytics"
+readme = "README.md"
+license = {text = "LGPL-v3.0"}
+authors = [
+    {name = "donBarbos", email = "donbarbos@proton.me"},
+]
+package-mode = false
+requires-python = "<4.0,>=3.10"
+dependencies = [
+    "sqlalchemy<3.0.0,>=2.0.38",
+    "pydantic<3.0.0,>=2.10.6",
+    "pydantic-settings<3.0.0,>=2.7.1",
+]
+
+[project.urls]
 homepage = "https://github.com/donBarbos/telegram-bot-template"
 repository = "https://github.com/donBarbos/telegram-bot-template"
-authors = ["donBarbos <donbarbos@proton.me>"]
-license = "LGPL-v3.0"
-readme = "README.md"
-package-mode = false
 
-[tool.poetry.dependencies]
-python = "^3.10"
-sqlalchemy = "^2.0.38"
-pydantic = "^2.10.6"
-pydantic-settings = "^2.7.1"
-
-[tool.poetry.group.bot.dependencies]
-aiogram = "^3.17.0"
-asyncpg = "^0.30.0"
-redis = "^5.2.1"
-loguru = "^0.7.3"
-sentry-sdk = {extras = ["loguru"], version = "^2.20.0"}
-aiohttp = {extras = ["speedups"], version = "^3.11.12"}
-uvloop = "^0.21.0"
-babel = "^2.17.0"
-cachetools = "^5.5.1"
-orjson = "^3.10.15"
-alembic = "^1.14.1"
-prometheus-client = "^0.21.1"
-
-[tool.poetry.group.admin.dependencies]
-gunicorn = "^23.0.0"
-flask = "^3.1.0"
-flask-admin = "^1.6.1"
-flask-security-too = "^5.5.2"
-flask-caching = "^2.3.0"
-flask-babel = "^4.0.0"
-flask-sqlalchemy = "^3.1.1"
-psycopg2-binary = "^2.9.10"
-tablib = {extras = ["xlsx"], version = "^3.8.0"}
-
-[tool.poetry.group.dev.dependencies]
-ruff = "^0.9.5"
-mypy = "^1.15.0"
-pre-commit = "^4.1.0"
-types-cachetools = "^5.5.0.20240820"
+[dependency-groups]
+bot = [
+    "aiogram<4.0.0,>=3.17.0",
+    "asyncpg<1.0.0,>=0.30.0",
+    "redis<6.0.0,>=5.2.1",
+    "loguru<1.0.0,>=0.7.3",
+    "sentry-sdk[loguru]<3.0.0,>=2.20.0",
+    "aiohttp[speedups]<4.0.0,>=3.11.12",
+    "uvloop<1.0.0,>=0.21.0",
+    "babel<3.0.0,>=2.17.0",
+    "cachetools<6.0.0,>=5.5.1",
+    "orjson<4.0.0,>=3.10.15",
+    "alembic<2.0.0,>=1.14.1",
+    "prometheus-client<1.0.0,>=0.21.1",
+]
+admin = [
+    "gunicorn<24.0.0,>=23.0.0",
+    "flask<4.0.0,>=3.1.0",
+    "flask-admin<2.0.0,>=1.6.1",
+    "flask-security-too<6.0.0,>=5.5.2",
+    "flask-caching<3.0.0,>=2.3.0",
+    "flask-babel<5.0.0,>=4.0.0",
+    "flask-sqlalchemy<4.0.0,>=3.1.1",
+    "psycopg2-binary<3.0.0,>=2.9.10",
+    "tablib[xlsx]<4.0.0,>=3.8.0",
+]
+dev = [
+    "ruff<1.0.0,>=0.9.5",
+    "mypy<2.0.0,>=1.15.0",
+    "pre-commit<5.0.0,>=4.1.0",
+    "types-cachetools<6.0.0.0,>=5.5.0.20240820",
+]
 
 [tool.ruff]
 fix = true
@@ -89,7 +95,3 @@ show_absolute_path = true
 [[tool.mypy.overrides]]
 module = "asyncpg.*"
 ignore_missing_imports = true
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
