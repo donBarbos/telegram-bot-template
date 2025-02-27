@@ -3,7 +3,7 @@ name = "telegram-bot-template"
 version = "2.4.0"
 description = "Best way to create a scalable telegram bot with analytics"
 readme = "README.md"
-license = {text = "LGPL-v3.0"}
+license = {text = "MIT"}
 authors = [
     {name = "donBarbos", email = "donbarbos@proton.me"},
 ]

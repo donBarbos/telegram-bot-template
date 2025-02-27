@@ -209,7 +209,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 ## 📝 License
 
-Distributed under the LGPL-3.0 license. See [`LICENSE`](./LICENSE.md) for more information.
+Distributed under the MIT license. See [`LICENSE`](./LICENSE.md) for more information.
 
 ## 📢 Contact
 
