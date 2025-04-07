@@ -12,7 +12,7 @@ requires-python = "<4.0,>=3.10"
 dependencies = [
     "sqlalchemy<3.0.0,>=2.0.38",
     "pydantic<3.0.0,>=2.10.6",
-    "pydantic-settings<3.0.0,>=2.7.1",
+    "pydantic-settings<3.0.0,>=2.8.1",
 ]
 
 [project.urls]
@@ -21,35 +21,35 @@ repository = "https://github.com/donBarbos/telegram-bot-template"
 
 [dependency-groups]
 bot = [
-    "aiogram<4.0.0,>=3.17.0",
-    "asyncpg<1.0.0,>=0.30.0",
-    "redis<6.0.0,>=5.2.1",
-    "loguru<1.0.0,>=0.7.3",
-    "sentry-sdk[loguru]<3.0.0,>=2.20.0",
-    "aiohttp[speedups]<4.0.0,>=3.11.12",
-    "uvloop<1.0.0,>=0.21.0",
-    "babel<3.0.0,>=2.17.0",
-    "cachetools<6.0.0,>=5.5.1",
-    "orjson<4.0.0,>=3.10.15",
-    "alembic<2.0.0,>=1.14.1",
-    "prometheus-client<1.0.0,>=0.21.1",
+    "aiogram>=3.19.0,<4.0.0",
+    "asyncpg>=0.30.0,<1.0.0",
+    "redis>=5.2.1,<6.0.0",
+    "loguru>=0.7.3,<1.0.0",
+    "sentry-sdk[loguru]>=2.20.0,<3.0.0",
+    "aiohttp[speedups]>=3.11.16,<4.0.0",
+    "uvloop>=0.21.0,<1.0.0",
+    "babel>=2.17.0,<3.0.0",
+    "cachetools>=5.5.1,<6.0.0",
+    "orjson>=3.10.15,<4.0.0",
+    "alembic>=1.14.1,<2.0.0",
+    "prometheus-client>=0.21.1,<1.0.0",
 ]
 admin = [
-    "gunicorn<24.0.0,>=23.0.0",
-    "flask<4.0.0,>=3.1.0",
-    "flask-admin<2.0.0,>=1.6.1",
-    "flask-security-too<6.0.0,>=5.5.2",
-    "flask-caching<3.0.0,>=2.3.0",
-    "flask-babel<5.0.0,>=4.0.0",
-    "flask-sqlalchemy<4.0.0,>=3.1.1",
-    "psycopg2-binary<3.0.0,>=2.9.10",
-    "tablib[xlsx]<4.0.0,>=3.8.0",
+    "gunicorn>=23.0.0,<24.0.0",
+    "flask>=3.1.0,<4.0.0",
+    "flask-admin>=1.6.1,<2.0.0",
+    "flask-security-too>=5.5.2,<6.0.0",
+    "flask-caching>=2.3.0,<3.0.0",
+    "flask-babel>=4.0.0,<5.0.0",
+    "flask-sqlalchemy>=3.1.1,<4.0.0",
+    "psycopg2-binary>=2.9.10,<3.0.0",
+    "tablib[xlsx]>=3.8.0,<4.0.0",
 ]
 dev = [
-    "ruff<1.0.0,>=0.9.5",
-    "mypy<2.0.0,>=1.15.0",
-    "pre-commit<5.0.0,>=4.1.0",
-    "types-cachetools<6.0.0.0,>=5.5.0.20240820",
+    "ruff>=0.9.5,<1.0.0",
+    "mypy>=1.15.0,<2.0.0",
+    "pre-commit>=4.2.0,<5.0.0",
+    "types-cachetools>=5.5.0.20240820,<6.0.0.0",
 ]
 
 [tool.ruff]
