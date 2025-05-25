@@ -33,7 +33,7 @@ class ACLMiddleware(I18nMiddleware):
         session: AsyncSession = data["session"]
 
         if hasattr(event, 'chat_member'):
-            return self.DEFAULT_LANGUAGE_CODE
+            return None
 
         user: User | None = getattr(event, "from_user", None)
         if not user:
