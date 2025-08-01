@@ -62,8 +62,8 @@ async def on_shutdown() -> None:
 
 
 async def setup_webhook() -> None:
-    from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
-    from aiohttp.web import AppRunner, TCPSite
+    from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application  # noqa: PLC0415
+    from aiohttp.web import AppRunner, TCPSite  # noqa: PLC0415
 
     await bot.set_webhook(
         settings.webhook_url,
