@@ -595,7 +595,7 @@ sdist = { url = "https://files.pythonhosted.org/packages/14/c7/2531aca6ab7baa377
 
 [[package]]
 name = "flask-security-too"
-version = "5.6.2"
+version = "5.7.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "email-validator" },
@@ -603,16 +603,13 @@ dependencies = [
     { name = "flask-login" },
     { name = "flask-principal" },
     { name = "flask-wtf" },
-    { name = "importlib-resources" },
-    { name = "libpass", marker = "python_full_version >= '3.13'" },
+    { name = "libpass" },
     { name = "markupsafe" },
-    { name = "passlib", marker = "python_full_version < '3.13'" },
-    { name = "setuptools", marker = "python_full_version < '3.13'" },
     { name = "wtforms" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/db/40/f1fcb25614e5b38eb7a5914a7aee482f67ba4b3f1bd3523e6faa43eab0c8/flask_security_too-5.6.2.tar.gz", hash = "sha256:5a48b9165146a02cb86a8073832df4ca177fbf4a7dbd707909279fbfad8a4032", size = 698849, upload-time = "2025-05-04T22:09:57.098Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/86/9a/a1cc333f03149371fe310175d264fe7a5fab96443e4c9a18a7991c39bd0d/flask_security_too-5.7.0.tar.gz", hash = "sha256:8f1df73eb337cdf6dbc265f2b51edebc413bc7bdc809f85418f2e3800136788f", size = 717340, upload-time = "2025-11-14T01:24:01.468Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a7/20/f4f732a3e231bc2c0f4d4ce63e32dc02aaea4ab6d7ed3739b69c708b1a3a/flask_security_too-5.6.2-py3-none-any.whl", hash = "sha256:61da7f4b6349e2cdf9f3ea53565cda2ed3588cd740a346be17f024f159e52c93", size = 438888, upload-time = "2025-05-04T22:09:55.079Z" },
+    { url = "https://files.pythonhosted.org/packages/32/e0/e42f8a16464b2864aaae693164bbb73da570d85c8340c45a72586b91f190/flask_security_too-5.7.0-py3-none-any.whl", hash = "sha256:1c9ad4b2530f7d05b037f191726244363f2967fc3a4032cc16cae568797c1d70", size = 459054, upload-time = "2025-11-14T01:23:59.514Z" },
 ]
 
 [[package]]
@@ -819,15 +816,6 @@ wheels = [
 ]
 
 [[package]]
-name = "importlib-resources"
-version = "6.5.2"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/cf/8c/f834fbf984f691b4f7ff60f50b514cc3de5cc08abfc3295564dd89c5e2e7/importlib_resources-6.5.2.tar.gz", hash = "sha256:185f87adef5bcc288449d98fb4fba07cea78bc036455dd44c5fc4a2fe78fed2c", size = 44693, upload-time = "2025-01-03T18:51:56.698Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/a4/ed/1f1afb2e9e7f38a545d628f864d562a5ae64fe6f7a10e28ffb9b185b4e89/importlib_resources-6.5.2-py3-none-any.whl", hash = "sha256:789cfdc3ed28c78b67a06acb8126751ced69a3d5f79c095a98298cd8a760ccec", size = 37461, upload-time = "2025-01-03T18:51:54.306Z" },
-]
-
-[[package]]
 name = "itsdangerous"
 version = "2.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -850,11 +838,11 @@ wheels = [
 
 [[package]]
 name = "libpass"
-version = "1.9.1"
+version = "1.9.3"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/31/d8/09a1a5768d74b7e4e43603dbfb3900224af4e1264dae821110efd8b1ea28/libpass-1.9.1.tar.gz", hash = "sha256:f5a9544f80cbe99523b3362fb1fc2ba411b10c541688526c3fdeea00541d27d0", size = 670876, upload-time = "2025-05-02T14:39:41.331Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/2a/f6/210563eef148773ef835d21c0fa1e8a43c5b10fceb1f63d5d650635b81da/libpass-1.9.3.tar.gz", hash = "sha256:7830b9323d9ba96a841ad698a8dec1d43a2b0b7f1c855c76772e7972c1c6d959", size = 692901, upload-time = "2025-10-09T14:26:28.363Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/99/95/8684e03b72cbf84944b76b0d92dc78b93c12aefcf8f4480ca5eb8450117e/libpass-1.9.1-py3-none-any.whl", hash = "sha256:40d79d4021b6ae8c5f57c76e047e8648662948535ccc0c6a7015d3eae704e14a", size = 306914, upload-time = "2025-05-02T14:39:39.865Z" },
+    { url = "https://files.pythonhosted.org/packages/ed/a6/ff00d926a9f4ece9e0732bcea1c3e8e9280390f48cec53f237e21f220082/libpass-1.9.3-py3-none-any.whl", hash = "sha256:3cbeb14d22086660e92c30d787ea981973d67394e81c8c870e1a83cfe1c84353", size = 307118, upload-time = "2025-10-09T14:26:25.551Z" },
 ]
 
 [[package]]
@@ -1209,15 +1197,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/a1/d4/1fc4078c65507b51b96ca8f8c3ba19e6a61c8253c72794544580a7b6c24d/packaging-25.0.tar.gz", hash = "sha256:d443872c98d677bf60f6a1f2f8c1cb748e8fe762d2bf9d3148b5599295b0fc4f", size = 165727, upload-time = "2025-04-19T11:48:59.673Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/20/12/38679034af332785aac8774540895e234f4d07f7545804097de4b666afd8/packaging-25.0-py3-none-any.whl", hash = "sha256:29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484", size = 66469, upload-time = "2025-04-19T11:48:57.875Z" },
-]
-
-[[package]]
-name = "passlib"
-version = "1.7.4"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/b6/06/9da9ee59a67fae7761aab3ccc84fa4f3f33f125b370f1ccdb915bf967c11/passlib-1.7.4.tar.gz", hash = "sha256:defd50f72b65c5402ab2c573830a6978e5f202ad0d984793c8dde2c4152ebe04", size = 689844, upload-time = "2020-10-08T19:00:52.121Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/3b/a4/ab6b7589382ca3df236e03faa71deac88cae040af60c071a78d254a62172/passlib-1.7.4-py2.py3-none-any.whl", hash = "sha256:aa6bca462b8d8bda89c70b382f0c298a20b5560af6cbfa2dce410c0a2fb669f1", size = 525554, upload-time = "2020-10-08T19:00:49.856Z" },
 ]
 
 [[package]]
@@ -1725,15 +1704,6 @@ wheels = [
 [package.optional-dependencies]
 loguru = [
     { name = "loguru" },
-]
-
-[[package]]
-name = "setuptools"
-version = "80.3.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/70/dc/3976b322de9d2e87ed0007cf04cc7553969b6c7b3f48a565d0333748fbcd/setuptools-80.3.1.tar.gz", hash = "sha256:31e2c58dbb67c99c289f51c16d899afedae292b978f8051efaf6262d8212f927", size = 1315082, upload-time = "2025-05-04T18:47:04.397Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/53/7e/5d8af3317ddbf9519b687bd1c39d8737fde07d97f54df65553faca5cffb1/setuptools-80.3.1-py3-none-any.whl", hash = "sha256:ea8e00d7992054c4c592aeb892f6ad51fe1b4d90cc6947cc45c45717c40ec537", size = 1201172, upload-time = "2025-05-04T18:47:02.575Z" },
 ]
 
 [[package]]
